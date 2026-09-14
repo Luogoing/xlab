@@ -1,0 +1,9 @@
+vite v8.0.13 building client environment for production...
+[2Ktransforming...✓ 1909 modules transformed.
+rendering chunks...
+computing gzip size...
+runtime-web/index.html                   0.51 kB │ gzip:   0.38 kB
+runtime-web/assets/index-BI7X-oJN.css  171.69 kB │ gzip:  26.89 kB
+runtime-web/assets/index-CuSN97kq.js   433.73 kB │ gzip: 137.43 kB
+
+✓ built in 1.37s

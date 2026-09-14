@@ -1,0 +1,160 @@
+TAP version 13
+# Subtest: A02 public snapshot hydrogen path has 5 records and 6 real excerpts
+ok 1 - A02 public snapshot hydrogen path has 5 records and 6 real excerpts
+  ---
+  duration_ms: 34.950582
+  type: 'test'
+  ...
+# Subtest: A03 battery task transfers with 3 records; unrelated topic has none
+ok 2 - A03 battery task transfers with 3 records; unrelated topic has none
+  ---
+  duration_ms: 3.953763
+  type: 'test'
+  ...
+# Subtest: A04 include, exclusion and publication dates affect data
+ok 3 - A04 include, exclusion and publication dates affect data
+  ---
+  duration_ms: 3.366473
+  type: 'test'
+  ...
+# Subtest: A04 invalid date and backwards range rejected
+ok 4 - A04 invalid date and backwards range rejected
+  ---
+  duration_ms: 1.182715
+  type: 'test'
+  ...
+# Subtest: A05 JSON and UTF8 CSV parse; quoted commas/newlines retained
+ok 5 - A05 JSON and UTF8 CSV parse; quoted commas/newlines retained
+  ---
+  duration_ms: 1.505208
+  type: 'test'
+  ...
+# Subtest: A05 malformed, missing fields, encoding and size errors
+ok 6 - A05 malformed, missing fields, encoding and size errors
+  ---
+  duration_ms: 56.943223
+  type: 'test'
+  ...
+# Subtest: A06 same publication dedupes; similar title with distinct number survives
+ok 7 - A06 same publication dedupes; similar title with distinct number survives
+  ---
+  duration_ms: 1.037244
+  type: 'test'
+  ...
+# Subtest: A07 no date/applicant/claims remains missing
+ok 8 - A07 no date/applicant/claims remains missing
+  ---
+  duration_ms: 1.167566
+  type: 'test'
+  ...
+# Subtest: CR04 imported claims visible as evidence and report
+ok 9 - CR04 imported claims visible as evidence and report
+  ---
+  duration_ms: 1.332356
+  type: 'test'
+  ...
+# Subtest: CR07 duplicate evidence IDs removed
+ok 10 - CR07 duplicate evidence IDs removed
+  ---
+  duration_ms: 0.934993
+  type: 'test'
+  ...
+# Subtest: A08 empty output has no synthetic claims or research questions
+ok 11 - A08 empty output has no synthetic claims or research questions
+  ---
+  duration_ms: 6.068954
+  type: 'test'
+  ...
+# Subtest: A09 citations reject outside record, changed evidence and unsupported source fact
+ok 12 - A09 citations reject outside record, changed evidence and unsupported source fact
+  ---
+  duration_ms: 2.22851
+  type: 'test'
+  ...
+# Subtest: A09 manual exclusion removes associated evidence and updates counts
+ok 13 - A09 manual exclusion removes associated evidence and updates counts
+  ---
+  duration_ms: 1.164605
+  type: 'test'
+  ...
+# Subtest: A10 statistics count each applicant once per publication
+ok 14 - A10 statistics count each applicant once per publication
+  ---
+  duration_ms: 1.723468
+  type: 'test'
+  ...
+# Subtest: A11 model boundary rejects invalid structure, invalid reference, timeout and rejection
+ok 15 - A11 model boundary rejects invalid structure, invalid reference, timeout and rejection
+  ---
+  duration_ms: 17.279281
+  type: 'test'
+  ...
+# Subtest: A12 backup restores task id, exclusions, notes, query and report histories
+ok 16 - A12 backup restores task id, exclusions, notes, query and report histories
+  ---
+  duration_ms: 5.28327
+  type: 'test'
+  ...
+# Subtest: A12 corrupted backups rejected, stale serialized claims rebuilt
+ok 17 - A12 corrupted backups rejected, stale serialized claims rebuilt
+  ---
+  duration_ms: 7.393863
+  type: 'test'
+  ...
+# Subtest: A13 report saves exact same markdown and preserves user editing
+ok 18 - A13 report saves exact same markdown and preserves user editing
+  ---
+  duration_ms: 0.877956
+  type: 'test'
+  ...
+# Subtest: A14 DOCX contains OPC zip header
+ok 19 - A14 DOCX contains OPC zip header
+  ---
+  duration_ms: 7.845165
+  type: 'test'
+  ...
+# Subtest: A16 missing live credentials gives explicit failure while snapshot still works
+ok 20 - A16 missing live credentials gives explicit failure while snapshot still works
+  ---
+  duration_ms: 2.849067
+  type: 'test'
+  ...
+# Subtest: A17 imported instructions remain text, URL schemes rejected
+ok 21 - A17 imported instructions remain text, URL schemes rejected
+  ---
+  duration_ms: 0.83667
+  type: 'test'
+  ...
+# Subtest: A18 output preserves scope, no unsupported advantage asserted
+ok 22 - A18 output preserves scope, no unsupported advantage asserted
+  ---
+  duration_ms: 2.919257
+  type: 'test'
+  ...
+# Subtest: A13 HTTP export preserves exact bytes and correct attachment headers
+ok 23 - A13 HTTP export preserves exact bytes and correct attachment headers
+  ---
+  duration_ms: 32.845036
+  type: 'test'
+  ...
+# Subtest: CR01 unrun topic edit then backup restore cannot bind stale strategy
+ok 24 - CR01 unrun topic edit then backup restore cannot bind stale strategy
+  ---
+  duration_ms: 1.087001
+  type: 'test'
+  ...
+# Subtest: A15 MCP stdio real process initializes, lists tools, explores and rejects bad arguments
+ok 25 - A15 MCP stdio real process initializes, lists tools, explores and rejects bad arguments
+  ---
+  duration_ms: 315.579099
+  type: 'test'
+  ...
+1..25
+# tests 25
+# suites 0
+# pass 25
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 668.364393

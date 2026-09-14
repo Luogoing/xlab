@@ -1,0 +1,26 @@
+{
+  "validation_date": "2026-09-12",
+  "record_count": 8,
+  "evidence_count": 9,
+  "topic_counts": {
+    "hydrogen": 5,
+    "battery": 3
+  },
+  "original_excerpt_word_counts": {
+    "US20220136656A1": 14,
+    "US20070029330A1": 16,
+    "US20050132745A1": 19,
+    "US20240178420A1": 21,
+    "US20240175550A1": 22,
+    "US20150044523A1": 22,
+    "US20110212355A1": 20,
+    "WO2016131141A1": 16
+  },
+  "duplicate_publication_count": 0,
+  "missing_applicant_count": 1,
+  "claims_missing_count": 8,
+  "legal_status_missing_count": 8,
+  "family_id_missing_count": 8,
+  "status": "passed_structure_and_excerpt_limit",
+  "source_text_exactness": "All evidence manually compared against opened public source text; no fulltext copies saved."
+}

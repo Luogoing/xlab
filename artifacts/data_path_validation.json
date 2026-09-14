@@ -1,0 +1,42 @@
+{
+  "validated_on": "2026-09-12",
+  "mode": "development_collection",
+  "request": {
+    "client": "Python standard library urllib.request",
+    "method": "GET",
+    "url": "https://patents.google.com/patent/US20220136656A1/en",
+    "timeout_seconds": 20,
+    "authentication": "none",
+    "attempts": 1
+  },
+  "observed_response": {
+    "status": 200,
+    "content_type": "text/html",
+    "bytes_read": 723378,
+    "contains_publication_number": true,
+    "elapsed_seconds": 7.42,
+    "fulltext_saved": false
+  },
+  "claims_supported": [
+    "当前环境能够通过一次终端GET取得该已知公开文献页面。",
+    "检索及页面读取工具能支持少量公开记录的人工核验。"
+  ],
+  "not_validated": [
+    "按主题自动检索Google Patents全库的正式API",
+    "稳定调用额度与SLA",
+    "网页CSV下载的实际执行",
+    "批量保存与再分发许可",
+    "其他网络环境下的持续可访问性"
+  ],
+  "source_instructions": {
+    "robots_url": "https://patents.google.com/robots.txt",
+    "known_patent_path_allowed": true,
+    "search_result_path_crawling_adopted": false,
+    "terms_url": "https://policies.google.com/terms?hl=en"
+  },
+  "http_failure_observed_for_selected_records": false,
+  "retrieval_quality_failures": [
+    "初始液氢+recondenser宽查询返回LNG再冷凝资料，未纳入样本。",
+    "液氢+recondensation查询未在本轮取得可代表独立再冷凝回路的入选记录。"
+  ]
+}

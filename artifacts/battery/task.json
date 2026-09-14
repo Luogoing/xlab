@@ -1,0 +1,403 @@
+{
+  "schema_version": 1,
+  "task_id": "task-mtyiteb3-8zhg4",
+  "topic": "锂电池液冷结构探索",
+  "language": "zh-CN",
+  "version": 1,
+  "created_at": "2026-09-12T15:09:12.495Z",
+  "updated_at": "2026-09-12T15:09:12.495Z",
+  "data_mode": "public_snapshot",
+  "inference_mode": "rules",
+  "stage": "completed",
+  "query": {
+    "version": 1,
+    "created_at": "2026-09-12T15:09:12.495Z",
+    "strategy": {
+      "domain": "battery",
+      "topic": "锂电池液冷结构探索",
+      "object": "电池热管理",
+      "focus": "液冷结构",
+      "object_terms": [
+        "电池",
+        "battery",
+        "batteries",
+        "lithium",
+        "pouch cell"
+      ],
+      "focus_terms": [
+        "液冷",
+        "冷却",
+        "cool",
+        "liquid",
+        "fluid"
+      ],
+      "exclude_terms": [],
+      "from": null,
+      "to": null,
+      "include_unknown_dates": true,
+      "rationale": "以电池限定技术对象，以冷却、液体与流体覆盖液冷方案表述，避免只检索一个中文词。",
+      "classification_hint": "首版未自动推荐分类号；请在官方分类表中核验后使用",
+      "match_logic": "组内 OR、对象与重点两组 AND；标题、人工转述、原文摘录参与词项匹配"
+    },
+    "query": "(\"电池\" OR \"battery\" OR \"batteries\" OR \"lithium\" OR \"pouch cell\") AND (\"液冷\" OR \"冷却\" OR \"cool\" OR \"liquid\" OR \"fluid\")",
+    "input_count": 8,
+    "unique_count": 8,
+    "returned_count": 3,
+    "manual_exclusions": []
+  },
+  "query_history": [
+    {
+      "version": 1,
+      "created_at": "2026-09-12T15:09:12.495Z",
+      "strategy": {
+        "domain": "battery",
+        "topic": "锂电池液冷结构探索",
+        "object": "电池热管理",
+        "focus": "液冷结构",
+        "object_terms": [
+          "电池",
+          "battery",
+          "batteries",
+          "lithium",
+          "pouch cell"
+        ],
+        "focus_terms": [
+          "液冷",
+          "冷却",
+          "cool",
+          "liquid",
+          "fluid"
+        ],
+        "exclude_terms": [],
+        "from": null,
+        "to": null,
+        "include_unknown_dates": true,
+        "rationale": "以电池限定技术对象，以冷却、液体与流体覆盖液冷方案表述，避免只检索一个中文词。",
+        "classification_hint": "首版未自动推荐分类号；请在官方分类表中核验后使用",
+        "match_logic": "组内 OR、对象与重点两组 AND；标题、人工转述、原文摘录参与词项匹配"
+      },
+      "query": "(\"电池\" OR \"battery\" OR \"batteries\" OR \"lithium\" OR \"pouch cell\") AND (\"液冷\" OR \"冷却\" OR \"cool\" OR \"liquid\" OR \"fluid\")",
+      "input_count": 8,
+      "unique_count": 8,
+      "returned_count": 3,
+      "manual_exclusions": []
+    }
+  ],
+  "records": [
+    {
+      "record_id": "pat-US20150044523A1",
+      "publication_number": "US20150044523A1",
+      "title": "Cooling plate for lithium-ion battery pack",
+      "abstract_excerpt": "The frame and the cooling fin define at least one fluid inlet, at least one fluid outlet, and a flow channel therebetween.",
+      "summary_zh": "该文献采用框架和冷却翅片共同形成流体入口、出口及其间流道的结构，可作为电池冷却板流路形成方式的学习样本。现有证据未给出可比较的实测温差或压降。",
+      "applicants": [
+        "GM Global Technology Operations LLC"
+      ],
+      "applicant_normalized": [
+        "GM Global Technology Operations LLC"
+      ],
+      "inventors": [],
+      "publication_date": "2015-02-12",
+      "application_date": null,
+      "priority_date": null,
+      "source": "Google Patents",
+      "source_url": "https://patents.google.com/patent/US20150044523A1/en",
+      "retrieved_at": "2026-09-12",
+      "imported_at": "2026-09-12T15:09:12.493Z",
+      "language": "en",
+      "data_mode": "public_snapshot",
+      "claims": null,
+      "legal_status": null,
+      "family_id": null,
+      "classifications": [],
+      "topic_tags": [
+        "锂电池",
+        "液冷",
+        "冷却板",
+        "框架流道",
+        "battery",
+        "cooling plate",
+        "channel"
+      ],
+      "verification": "公开页面人工核验快照",
+      "content_scope": "有限原文摘录，未取得完整权利要求",
+      "evidence": [
+        {
+          "evidence_id": "ev-US20150044523A1-b07c66bc",
+          "record_id": "pat-US20150044523A1",
+          "text": "The frame and the cooling fin define at least one fluid inlet, at least one fluid outlet, and a flow channel therebetween.",
+          "field": "abstract",
+          "locator": "Abstract，第1段最后一句。",
+          "language": "en",
+          "translated": false,
+          "source_url": "https://patents.google.com/patent/US20150044523A1/en",
+          "retrieved_at": "2026-09-12",
+          "checksum": "fnv1a32:3ef0e1c4"
+        }
+      ],
+      "match_terms": [
+        "电池",
+        "battery",
+        "lithium",
+        "冷却",
+        "cool",
+        "fluid"
+      ],
+      "score": 12,
+      "relevance_reason": "对象词命中 3 项，重点词命中 3 项；分数用于当前样本排序"
+    },
+    {
+      "record_id": "pat-WO2016131141A1",
+      "publication_number": "WO2016131141A1",
+      "title": "Lithium ion battery module with cooling system",
+      "abstract_excerpt": null,
+      "summary_zh": "该文献说明液体冷却通道可由穿过框架的管路形成，可作为嵌管式液冷结构的代表记录。当前片段支持管路与框架的关系，未提供制造成本、密封可靠性或循环寿命数据。",
+      "applicants": [
+        "Ttb Holding Co Ltd"
+      ],
+      "applicant_normalized": [
+        "Ttb Holding Co Ltd"
+      ],
+      "inventors": [],
+      "publication_date": "2016-08-25",
+      "application_date": null,
+      "priority_date": null,
+      "source": "Google Patents",
+      "source_url": "https://patents.google.com/patent/WO2016131141A1/en",
+      "retrieved_at": "2026-09-12",
+      "imported_at": "2026-09-12T15:09:12.493Z",
+      "language": "en",
+      "data_mode": "public_snapshot",
+      "claims": null,
+      "legal_status": null,
+      "family_id": null,
+      "classifications": [],
+      "topic_tags": [
+        "锂电池",
+        "液冷",
+        "冷却板",
+        "嵌管",
+        "battery",
+        "liquid coolant",
+        "channel"
+      ],
+      "verification": "公开页面人工核验快照",
+      "content_scope": "有限原文摘录，未取得完整权利要求",
+      "evidence": [
+        {
+          "evidence_id": "ev-WO2016131141A1-22ef7dbe",
+          "record_id": "pat-WO2016131141A1",
+          "text": "The liquid coolant-receiving channel may be provided by way of a pipe extending through the frame.",
+          "field": "description",
+          "locator": "Description，Summary中The liquid coolant-receiving channel开头的句子；并可参看[0044]。",
+          "language": "en",
+          "translated": false,
+          "source_url": "https://patents.google.com/patent/WO2016131141A1/en",
+          "retrieved_at": "2026-09-12",
+          "checksum": "fnv1a32:feac94b8"
+        }
+      ],
+      "match_terms": [
+        "battery",
+        "lithium",
+        "液冷",
+        "冷却",
+        "cool",
+        "liquid"
+      ],
+      "score": 10,
+      "relevance_reason": "对象词命中 2 项，重点词命中 4 项；分数用于当前样本排序"
+    },
+    {
+      "record_id": "pat-US20110212355A1",
+      "publication_number": "US20110212355A1",
+      "title": "U-formed cooling plate with solid fins for lithium pouch cells",
+      "abstract_excerpt": "The first side wall, the second side wall and the base wall have at least one flow channel formed therein.",
+      "summary_zh": "该文献记载在两侧壁和底壁内形成冷却流道，标题指向带实心翅片的U形冷却板。它可与平面冷却板比较结构布置，现有短摘录不足以确定两种方案在相同工况下的优劣。",
+      "applicants": [
+        "GM Global Technology Operations LLC"
+      ],
+      "applicant_normalized": [
+        "GM Global Technology Operations LLC"
+      ],
+      "inventors": [],
+      "publication_date": "2011-09-01",
+      "application_date": null,
+      "priority_date": null,
+      "source": "Google Patents",
+      "source_url": "https://patents.google.com/patent/US20110212355A1/en",
+      "retrieved_at": "2026-09-12",
+      "imported_at": "2026-09-12T15:09:12.493Z",
+      "language": "en",
+      "data_mode": "public_snapshot",
+      "claims": null,
+      "legal_status": null,
+      "family_id": null,
+      "classifications": [],
+      "topic_tags": [
+        "锂电池",
+        "液冷",
+        "冷却板",
+        "U形",
+        "battery",
+        "cooling plate",
+        "channel"
+      ],
+      "verification": "公开页面人工核验快照",
+      "content_scope": "有限原文摘录，未取得完整权利要求",
+      "evidence": [
+        {
+          "evidence_id": "ev-US20110212355A1-0da213e3",
+          "record_id": "pat-US20110212355A1",
+          "text": "The first side wall, the second side wall and the base wall have at least one flow channel formed therein.",
+          "field": "abstract",
+          "locator": "Abstract，第1段第3句。",
+          "language": "en",
+          "translated": false,
+          "source_url": "https://patents.google.com/patent/US20110212355A1/en",
+          "retrieved_at": "2026-09-12",
+          "checksum": "fnv1a32:4e0fd64b"
+        }
+      ],
+      "match_terms": [
+        "lithium",
+        "pouch cell",
+        "冷却",
+        "cool"
+      ],
+      "score": 8,
+      "relevance_reason": "对象词命中 2 项，重点词命中 2 项；分数用于当前样本排序"
+    }
+  ],
+  "analysis": {
+    "groups": [
+      {
+        "group_id": "group-4",
+        "label": "液冷与流道结构",
+        "record_ids": [
+          "pat-US20150044523A1",
+          "pat-WO2016131141A1",
+          "pat-US20110212355A1"
+        ],
+        "evidence_ids": [
+          "ev-US20150044523A1-b07c66bc",
+          "ev-WO2016131141A1-22ef7dbe",
+          "ev-US20110212355A1-0da213e3"
+        ],
+        "reason": "依据所列原文片段中可识别的结构/过程词初步归类，同一记录可进入多个组；待专业复核"
+      }
+    ],
+    "claims": [
+      {
+        "claim_id": "cl-US20150044523A1",
+        "text": "记录 US20150044523A1 的可见材料包含：The frame and the cooling fin define at least one fluid inlet, at least one fluid outlet, and a flow channel therebetween.",
+        "type": "source_fact",
+        "evidence_ids": [
+          "ev-US20150044523A1-b07c66bc"
+        ],
+        "scope": "当前公开记录的有限片段",
+        "limitations": "未覆盖完整说明书及权利要求，不能据此确定保护范围",
+        "review_status": "原文摘录，待用户阅读"
+      },
+      {
+        "claim_id": "cl-WO2016131141A1",
+        "text": "记录 WO2016131141A1 的可见材料包含：The liquid coolant-receiving channel may be provided by way of a pipe extending through the frame.",
+        "type": "source_fact",
+        "evidence_ids": [
+          "ev-WO2016131141A1-22ef7dbe"
+        ],
+        "scope": "当前公开记录的有限片段",
+        "limitations": "未覆盖完整说明书及权利要求，不能据此确定保护范围",
+        "review_status": "原文摘录，待用户阅读"
+      },
+      {
+        "claim_id": "cl-US20110212355A1",
+        "text": "记录 US20110212355A1 的可见材料包含：The first side wall, the second side wall and the base wall have at least one flow channel formed therein.",
+        "type": "source_fact",
+        "evidence_ids": [
+          "ev-US20110212355A1-0da213e3"
+        ],
+        "scope": "当前公开记录的有限片段",
+        "limitations": "未覆盖完整说明书及权利要求，不能据此确定保护范围",
+        "review_status": "原文摘录，待用户阅读"
+      }
+    ],
+    "opportunities": [
+      {
+        "claim_id": "question-group-4",
+        "text": "液冷与流道结构在你的工况下需要哪些参数与验证条件？请补充完整说明书、论文和实验依据后比较。",
+        "type": "research_question",
+        "evidence_ids": [
+          "ev-US20150044523A1-b07c66bc",
+          "ev-WO2016131141A1-22ef7dbe",
+          "ev-US20110212355A1-0da213e3"
+        ],
+        "scope": "当前样本引出的研究问题",
+        "limitations": "材料不足以证明性能优劣、创新空白或自由实施",
+        "review_status": "待验证"
+      }
+    ]
+  },
+  "stats": {
+    "count": 3,
+    "years": {
+      "2011": 1,
+      "2015": 1,
+      "2016": 1
+    },
+    "applicants": {
+      "GM Global Technology Operations LLC": 2,
+      "Ttb Holding Co Ltd": 1
+    },
+    "unknown_applicants": 0,
+    "evidence_count": 3,
+    "missing_claims": 3
+  },
+  "warnings": [],
+  "dataset_scope": {
+    "input_count": 8,
+    "unique_count": 8,
+    "duplicate_count": 0,
+    "source_urls": [
+      "https://patents.google.com/patent/US20220136656A1/en",
+      "https://patents.google.com/patent/US20070029330A1/en",
+      "https://patents.google.com/patent/US20050132745A1/en",
+      "https://patents.google.com/patent/US20240178420A1/en",
+      "https://patents.google.com/patent/US20240175550A1/en",
+      "https://patents.google.com/patent/US20150044523A1/en",
+      "https://patents.google.com/patent/US20110212355A1/en",
+      "https://patents.google.com/patent/WO2016131141A1/en"
+    ],
+    "retrieved_dates": [
+      "2026-09-12"
+    ],
+    "data_modes": [
+      "public_snapshot"
+    ]
+  },
+  "report_versions": [
+    {
+      "report_id": "report-task-mtyiteb3-8zhg4-1",
+      "version": 1,
+      "query_version": 1,
+      "created_at": "2026-09-12T15:09:12.495Z",
+      "user_edited": false,
+      "edit": {},
+      "markdown": "# 锂电池液冷结构探索：专利情报探索记录\n\n任务 task-mtyiteb3-8zhg4｜查询版本 1｜分析更新时间 2026-09-12T15:09:12.495Z\n\n数据模式：公开记录快照；推理模式：规则处理。\n\n## 一、研究问题与资料范围\n\n本次任务围绕锂电池液冷结构探索整理已取得专利材料。载入 8 条记录，按公开编号去重后 8 条，当前筛选并保留 3 条；同族关系未核验，不进行专利族合并。数据取得日期为 2026-09-12，当前记录共含 3 条证据片段。\n\n## 二、检索策略与筛选条件\n\n本次使用可复核的词项策略筛选本地样本。检索式：(\"电池\" OR \"battery\" OR \"batteries\" OR \"lithium\" OR \"pouch cell\") AND (\"液冷\" OR \"冷却\" OR \"cool\" OR \"liquid\" OR \"fluid\")。公开日期范围：不限 至 不限；保留日期缺失记录；人工排除 0 条。该检索式表示本地组合逻辑，外部平台查询需另行核对语法与覆盖范围。\n\n## 三、代表记录与证据\n\n### US20150044523A1 Cooling plate for lithium-ion battery pack\n\n该记录的可核查范围为有限原文摘录，未取得完整权利要求。公开日期：2015-02-12；来源所列原始申请人：GM Global Technology Operations LLC；记录模式：公开记录快照；法律状态：未取得；专利族：未取得。\n\n资料人工转述：该文献采用框架和冷却翅片共同形成流体入口、出口及其间流道的结构，可作为电池冷却板流路形成方式的学习样本。现有证据未给出可比较的实测温差或压降。\n\n[ev-US20150044523A1-b07c66bc] The frame and the cooling fin define at least one fluid inlet, at least one fluid outlet, and a flow channel therebetween.\n\n定位：Abstract，第1段最后一句。；语言：en；原文；校验：fnv1a32:3ef0e1c4。来源：https://patents.google.com/patent/US20150044523A1/en。\n\n### WO2016131141A1 Lithium ion battery module with cooling system\n\n该记录的可核查范围为有限原文摘录，未取得完整权利要求。公开日期：2016-08-25；来源所列原始申请人：Ttb Holding Co Ltd；记录模式：公开记录快照；法律状态：未取得；专利族：未取得。\n\n资料人工转述：该文献说明液体冷却通道可由穿过框架的管路形成，可作为嵌管式液冷结构的代表记录。当前片段支持管路与框架的关系，未提供制造成本、密封可靠性或循环寿命数据。\n\n[ev-WO2016131141A1-22ef7dbe] The liquid coolant-receiving channel may be provided by way of a pipe extending through the frame.\n\n定位：Description，Summary中The liquid coolant-receiving channel开头的句子；并可参看[0044]。；语言：en；原文；校验：fnv1a32:feac94b8。来源：https://patents.google.com/patent/WO2016131141A1/en。\n\n### US20110212355A1 U-formed cooling plate with solid fins for lithium pouch cells\n\n该记录的可核查范围为有限原文摘录，未取得完整权利要求。公开日期：2011-09-01；来源所列原始申请人：GM Global Technology Operations LLC；记录模式：公开记录快照；法律状态：未取得；专利族：未取得。\n\n资料人工转述：该文献记载在两侧壁和底壁内形成冷却流道，标题指向带实心翅片的U形冷却板。它可与平面冷却板比较结构布置，现有短摘录不足以确定两种方案在相同工况下的优劣。\n\n[ev-US20110212355A1-0da213e3] The first side wall, the second side wall and the base wall have at least one flow channel formed therein.\n\n定位：Abstract，第1段第3句。；语言：en；原文；校验：fnv1a32:4e0fd64b。来源：https://patents.google.com/patent/US20110212355A1/en。\n\n## 四、初步方案分组与待验证问题\n\n液冷与流道结构包含 3 条记录。依据所列原文片段中可识别的结构/过程词初步归类，同一记录可进入多个组；待专业复核。依据：[ev-US20150044523A1-b07c66bc] [ev-WO2016131141A1-22ef7dbe] [ev-US20110212355A1-0da213e3]。\n\n液冷与流道结构在你的工况下需要哪些参数与验证条件？请补充完整说明书、论文和实验依据后比较。 依据：[ev-US20150044523A1-b07c66bc] [ev-WO2016131141A1-22ef7dbe] [ev-US20110212355A1-0da213e3]。\n\n## 五、边界与下一步\n\n现有材料支持对已载入记录进行阅读和初步整理。3 条保留记录未提供权利要求；后续需要补充全文、核对法律状态和专利族，并用独立检索检查遗漏。本次结果不用于自动判定侵权、授权前景、自由实施或全球创新空白。\n\n执行记录：规则处理 1.475 ms；实时模型调用 0 次；付费接口调用 0 次。耗时只对应当前环境和样本。"
+    }
+  ],
+  "selected_notes": {},
+  "timings": {
+    "processing_ms": 1.475
+  },
+  "cost": {
+    "model_calls": 0,
+    "api_calls": 0,
+    "paid_cost": 0
+  },
+  "limitations": [
+    "当前结果仅代表本次载入样本，未执行全球专利全量检索",
+    "使用词项规则进行筛选与方案初分组，未调用实时语言模型",
+    "缺失的法律状态、专利族及权利要求保留空值"
+  ]
+}

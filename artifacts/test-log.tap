@@ -1,0 +1,33 @@
+✔ A02 public snapshot hydrogen path has 5 records and 6 real excerpts (11.772836ms)
+✔ A03 battery task transfers with 3 records; unrelated topic has none (1.322655ms)
+✔ A04 include, exclusion and publication dates affect data (0.745915ms)
+✔ A04 invalid date and backwards range rejected (0.456949ms)
+✔ A05 JSON and UTF8 CSV parse; quoted commas/newlines retained (0.743371ms)
+✔ A05 malformed, missing fields, encoding and size errors (3.600881ms)
+✔ A06 same publication dedupes; similar title with distinct number survives (0.262896ms)
+✔ A07 no date/applicant/claims remains missing (0.335436ms)
+✔ CR04 imported claims visible as evidence and report (0.488136ms)
+✔ CR07 duplicate evidence IDs removed (0.467775ms)
+✔ A08 empty output has no synthetic claims or research questions (1.765593ms)
+✔ A09 citations reject outside record, changed evidence and unsupported source fact (1.067049ms)
+✔ A09 manual exclusion removes associated evidence and updates counts (0.826326ms)
+✔ A10 statistics count each applicant once per publication (0.831534ms)
+✔ A11 model boundary rejects invalid structure, invalid reference, timeout and rejection (10.724525ms)
+✔ A12 backup restores task id, exclusions, notes, query and report histories (2.341522ms)
+✔ A12 corrupted backups rejected, stale serialized claims rebuilt (2.28752ms)
+✔ A13 report saves exact same markdown and preserves user editing (0.509759ms)
+✔ A14 DOCX contains OPC zip header (4.538685ms)
+✔ A16 missing live credentials gives explicit failure while snapshot still works (0.506354ms)
+✔ A17 imported instructions remain text, URL schemes rejected (0.24544ms)
+✔ A18 output preserves scope, no unsupported advantage asserted (0.556809ms)
+✔ A13 HTTP export preserves exact bytes and correct attachment headers (14.911359ms)
+✔ CR01 unrun topic edit then backup restore cannot bind stale strategy (0.703691ms)
+✔ A15 MCP stdio real process initializes, lists tools, explores and rejects bad arguments (85.082791ms)
+ℹ tests 25
+ℹ suites 0
+ℹ pass 25
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 177.446866

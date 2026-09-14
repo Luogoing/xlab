@@ -1,0 +1,624 @@
+{
+  "schema_version": 1,
+  "task_id": "task-mtyite91-wr7au",
+  "topic": "液氢储罐压力调节方案探索",
+  "language": "zh-CN",
+  "version": 1,
+  "created_at": "2026-09-12T15:09:12.421Z",
+  "updated_at": "2026-09-12T15:09:12.421Z",
+  "data_mode": "public_snapshot",
+  "inference_mode": "rules",
+  "stage": "completed",
+  "query": {
+    "version": 1,
+    "created_at": "2026-09-12T15:09:12.421Z",
+    "strategy": {
+      "domain": "hydrogen",
+      "topic": "液氢储罐压力调节方案探索",
+      "object": "液氢储罐",
+      "focus": "压力调节",
+      "object_terms": [
+        "液氢",
+        "liquid hydrogen",
+        "LH2"
+      ],
+      "focus_terms": [
+        "压力",
+        "加热",
+        "放气",
+        "冷凝",
+        "pressure",
+        "heater",
+        "vent",
+        "recondens",
+        "reliquef"
+      ],
+      "exclude_terms": [],
+      "from": null,
+      "to": null,
+      "include_unknown_dates": true,
+      "rationale": "中英文对象词覆盖液氢表达；压力、加热、放气与冷凝词用于比较控制手段。通用低温记录需人工确认是否适用于液氢。",
+      "classification_hint": "首版未自动推荐分类号；请在官方分类表中核验后使用",
+      "match_logic": "组内 OR、对象与重点两组 AND；标题、人工转述、原文摘录参与词项匹配"
+    },
+    "query": "(\"液氢\" OR \"liquid hydrogen\" OR \"LH2\") AND (\"压力\" OR \"加热\" OR \"放气\" OR \"冷凝\" OR \"pressure\" OR \"heater\" OR \"vent\" OR \"recondens\" OR \"reliquef\")",
+    "input_count": 8,
+    "unique_count": 8,
+    "returned_count": 5,
+    "manual_exclusions": []
+  },
+  "query_history": [
+    {
+      "version": 1,
+      "created_at": "2026-09-12T15:09:12.421Z",
+      "strategy": {
+        "domain": "hydrogen",
+        "topic": "液氢储罐压力调节方案探索",
+        "object": "液氢储罐",
+        "focus": "压力调节",
+        "object_terms": [
+          "液氢",
+          "liquid hydrogen",
+          "LH2"
+        ],
+        "focus_terms": [
+          "压力",
+          "加热",
+          "放气",
+          "冷凝",
+          "pressure",
+          "heater",
+          "vent",
+          "recondens",
+          "reliquef"
+        ],
+        "exclude_terms": [],
+        "from": null,
+        "to": null,
+        "include_unknown_dates": true,
+        "rationale": "中英文对象词覆盖液氢表达；压力、加热、放气与冷凝词用于比较控制手段。通用低温记录需人工确认是否适用于液氢。",
+        "classification_hint": "首版未自动推荐分类号；请在官方分类表中核验后使用",
+        "match_logic": "组内 OR、对象与重点两组 AND；标题、人工转述、原文摘录参与词项匹配"
+      },
+      "query": "(\"液氢\" OR \"liquid hydrogen\" OR \"LH2\") AND (\"压力\" OR \"加热\" OR \"放气\" OR \"冷凝\" OR \"pressure\" OR \"heater\" OR \"vent\" OR \"recondens\" OR \"reliquef\")",
+      "input_count": 8,
+      "unique_count": 8,
+      "returned_count": 5,
+      "manual_exclusions": []
+    }
+  ],
+  "records": [
+    {
+      "record_id": "pat-US20050132745A1",
+      "publication_number": "US20050132745A1",
+      "title": "No-vent liquid hydrogen storage and delivery system",
+      "abstract_excerpt": "having an orifice pulse tube refrigerator",
+      "summary_zh": "该文献采用小孔脉管制冷机配合液氢储存容器，其冷却系统旨在将液氢维持于饱和温度或以下。该记录支持主动冷却方案分组，现有短摘录没有证明独立再冷凝回路或实际零蒸发率。",
+      "applicants": [
+        "Sierra Lobo Inc"
+      ],
+      "applicant_normalized": [
+        "Sierra Lobo Inc"
+      ],
+      "inventors": [],
+      "publication_date": "2005-06-23",
+      "application_date": null,
+      "priority_date": null,
+      "source": "Google Patents",
+      "source_url": "https://patents.google.com/patent/US20050132745A1/en",
+      "retrieved_at": "2026-09-12",
+      "imported_at": "2026-09-12T15:09:12.412Z",
+      "language": "en",
+      "data_mode": "public_snapshot",
+      "claims": null,
+      "legal_status": null,
+      "family_id": null,
+      "classifications": [],
+      "topic_tags": [
+        "液氢",
+        "储罐",
+        "压力调节",
+        "冷却",
+        "脉管制冷",
+        "liquid hydrogen",
+        "cooling",
+        "refrigerator"
+      ],
+      "verification": "公开页面人工核验快照",
+      "content_scope": "有限原文摘录，未取得完整权利要求",
+      "evidence": [
+        {
+          "evidence_id": "ev-US20050132745A1-c88c86a3",
+          "record_id": "pat-US20050132745A1",
+          "text": "having an orifice pulse tube refrigerator",
+          "field": "abstract",
+          "locator": "Abstract，第1句中的设备构成。",
+          "language": "en",
+          "translated": false,
+          "source_url": "https://patents.google.com/patent/US20050132745A1/en",
+          "retrieved_at": "2026-09-12",
+          "checksum": "fnv1a32:5817013b"
+        },
+        {
+          "evidence_id": "ev-US20050132745A1-b262c5d8",
+          "record_id": "pat-US20050132745A1",
+          "text": "maintain the liquid hydrogen in the vessel at or below its saturation temperature.",
+          "field": "abstract",
+          "locator": "Abstract，第2句结尾。",
+          "language": "en",
+          "translated": false,
+          "source_url": "https://patents.google.com/patent/US20050132745A1/en",
+          "retrieved_at": "2026-09-12",
+          "checksum": "fnv1a32:0a9da820"
+        }
+      ],
+      "match_terms": [
+        "液氢",
+        "liquid hydrogen",
+        "冷凝",
+        "vent"
+      ],
+      "score": 8,
+      "relevance_reason": "对象词命中 2 项，重点词命中 2 项；分数用于当前样本排序"
+    },
+    {
+      "record_id": "pat-US20070029330A1",
+      "publication_number": "US20070029330A1",
+      "title": "Liquid hydrogen tank with a release pressure above the critical pressure",
+      "abstract_excerpt": "A liquid hydrogen storage tank is provided with a boil-off release pressure above the critical pressure.",
+      "summary_zh": "该文献将液氢储罐的蒸发气释放压力设在临界压力以上，可用于学习释放阈值这一设计变量。样本未摘录完整权利要求或独立验证其性能，因此不能据此给出现有设备的压力设定建议。",
+      "applicants": [],
+      "applicant_normalized": [],
+      "inventors": [],
+      "publication_date": "2007-02-08",
+      "application_date": null,
+      "priority_date": null,
+      "source": "Google Patents",
+      "source_url": "https://patents.google.com/patent/US20070029330A1/en",
+      "retrieved_at": "2026-09-12",
+      "imported_at": "2026-09-12T15:09:12.412Z",
+      "language": "en",
+      "data_mode": "public_snapshot",
+      "claims": null,
+      "legal_status": null,
+      "family_id": null,
+      "classifications": [],
+      "topic_tags": [
+        "液氢",
+        "储罐",
+        "压力调节",
+        "放气",
+        "泄放",
+        "liquid hydrogen",
+        "vent",
+        "release pressure"
+      ],
+      "verification": "公开页面人工核验快照",
+      "content_scope": "有限原文摘录，未取得完整权利要求",
+      "evidence": [
+        {
+          "evidence_id": "ev-US20070029330A1-0ceecbb7",
+          "record_id": "pat-US20070029330A1",
+          "text": "A liquid hydrogen storage tank is provided with a boil-off release pressure above the critical pressure.",
+          "field": "abstract",
+          "locator": "Abstract，第1句。",
+          "language": "en",
+          "translated": false,
+          "source_url": "https://patents.google.com/patent/US20070029330A1/en",
+          "retrieved_at": "2026-09-12",
+          "checksum": "fnv1a32:87d1614f"
+        }
+      ],
+      "match_terms": [
+        "液氢",
+        "liquid hydrogen",
+        "压力",
+        "pressure"
+      ],
+      "score": 8,
+      "relevance_reason": "对象词命中 2 项，重点词命中 2 项；分数用于当前样本排序"
+    },
+    {
+      "record_id": "pat-US20240175550A1",
+      "publication_number": "US20240175550A1",
+      "title": "Liquid Hydrogen Tank Control Device and Control Method Thereof",
+      "abstract_excerpt": null,
+      "summary_zh": "该文献说明控制板可接通蒸发器或加热器，使内罐压力升至预定值。当前证据用于讨论加热执行与压力目标的联系，不能证明其采用特定先进控制算法或达到某一跟踪误差。",
+      "applicants": [
+        "H2creo Corp"
+      ],
+      "applicant_normalized": [
+        "H2creo Corp"
+      ],
+      "inventors": [],
+      "publication_date": "2024-05-30",
+      "application_date": null,
+      "priority_date": null,
+      "source": "Google Patents",
+      "source_url": "https://patents.google.com/patent/US20240175550A1/en",
+      "retrieved_at": "2026-09-12",
+      "imported_at": "2026-09-12T15:09:12.412Z",
+      "language": "en",
+      "data_mode": "public_snapshot",
+      "claims": null,
+      "legal_status": null,
+      "family_id": null,
+      "classifications": [],
+      "topic_tags": [
+        "液氢",
+        "储罐",
+        "压力调节",
+        "加热",
+        "控制",
+        "liquid hydrogen",
+        "heater",
+        "pressure control"
+      ],
+      "verification": "公开页面人工核验快照",
+      "content_scope": "有限原文摘录，未取得完整权利要求",
+      "evidence": [
+        {
+          "evidence_id": "ev-US20240175550A1-3bedfb99",
+          "record_id": "pat-US20240175550A1",
+          "text": "turn on the evaporator 15 or the heater so that the pressure of the inner tank 14 rises to a predetermined pressure.",
+          "field": "description",
+          "locator": "Description，FIG.7之后，The control board 112 may be configured to control operation of a switch段落。",
+          "language": "en",
+          "translated": false,
+          "source_url": "https://patents.google.com/patent/US20240175550A1/en",
+          "retrieved_at": "2026-09-12",
+          "checksum": "fnv1a32:a259ac43"
+        }
+      ],
+      "match_terms": [
+        "liquid hydrogen",
+        "压力",
+        "加热",
+        "pressure",
+        "heater"
+      ],
+      "score": 7,
+      "relevance_reason": "对象词命中 1 项，重点词命中 4 项；分数用于当前样本排序"
+    },
+    {
+      "record_id": "pat-US20240178420A1",
+      "publication_number": "US20240178420A1",
+      "title": "System for regulating pressure in liquid hydrogen fuel tank for a fuel cell electric vehicle",
+      "abstract_excerpt": "liquid hydrogen supplied from the liquid hydrogen pump passes through the heat exchanger and is sprayed into a gaseous hydrogen section",
+      "summary_zh": "该文献记载由液氢泵供给的液氢经过换热器后喷入气相区的流路，可用于探索换热与喷淋方案。当前片段支持流路构成，未形成对降压速度、系统效率或航空适用性的验证。",
+      "applicants": [
+        "Korea Aerospace Research Institute KARI"
+      ],
+      "applicant_normalized": [
+        "Korea Aerospace Research Institute KARI"
+      ],
+      "inventors": [],
+      "publication_date": "2024-05-30",
+      "application_date": null,
+      "priority_date": null,
+      "source": "Google Patents",
+      "source_url": "https://patents.google.com/patent/US20240178420A1/en",
+      "retrieved_at": "2026-09-12",
+      "imported_at": "2026-09-12T15:09:12.412Z",
+      "language": "en",
+      "data_mode": "public_snapshot",
+      "claims": null,
+      "legal_status": null,
+      "family_id": null,
+      "classifications": [],
+      "topic_tags": [
+        "液氢",
+        "储罐",
+        "压力调节",
+        "冷却",
+        "喷淋",
+        "换热",
+        "liquid hydrogen",
+        "cooling",
+        "heat exchanger"
+      ],
+      "verification": "公开页面人工核验快照",
+      "content_scope": "有限原文摘录，未取得完整权利要求",
+      "evidence": [
+        {
+          "evidence_id": "ev-US20240178420A1-14a5ec26",
+          "record_id": "pat-US20240178420A1",
+          "text": "liquid hydrogen supplied from the liquid hydrogen pump passes through the heat exchanger and is sprayed into a gaseous hydrogen section",
+          "field": "abstract",
+          "locator": "Abstract，第2段，first flow path的描述。",
+          "language": "en",
+          "translated": false,
+          "source_url": "https://patents.google.com/patent/US20240178420A1/en",
+          "retrieved_at": "2026-09-12",
+          "checksum": "fnv1a32:0068839e"
+        }
+      ],
+      "match_terms": [
+        "液氢",
+        "liquid hydrogen",
+        "pressure"
+      ],
+      "score": 7,
+      "relevance_reason": "对象词命中 2 项，重点词命中 1 项；分数用于当前样本排序"
+    },
+    {
+      "record_id": "pat-US20220136656A1",
+      "publication_number": "US20220136656A1",
+      "title": "Systems and methods for storing liquid hydrogen",
+      "abstract_excerpt": null,
+      "summary_zh": "该文献记载通过罐内主电加热器调节氢的温度，间接控制罐压。当前短摘录支持加热调压这一方案要素，未提供闭环性能或能耗对比。",
+      "applicants": [
+        "Universal Hydrogen Co"
+      ],
+      "applicant_normalized": [
+        "Universal Hydrogen Co"
+      ],
+      "inventors": [],
+      "publication_date": "2022-05-05",
+      "application_date": null,
+      "priority_date": null,
+      "source": "Google Patents",
+      "source_url": "https://patents.google.com/patent/US20220136656A1/en",
+      "retrieved_at": "2026-09-12",
+      "imported_at": "2026-09-12T15:09:12.411Z",
+      "language": "en",
+      "data_mode": "public_snapshot",
+      "claims": null,
+      "legal_status": null,
+      "family_id": null,
+      "classifications": [],
+      "topic_tags": [
+        "液氢",
+        "储罐",
+        "压力调节",
+        "加热",
+        "liquid hydrogen",
+        "heater",
+        "pressure control"
+      ],
+      "verification": "公开页面人工核验快照",
+      "content_scope": "有限原文摘录，未取得完整权利要求",
+      "evidence": [
+        {
+          "evidence_id": "ev-US20220136656A1-db62d1e6",
+          "record_id": "pat-US20220136656A1",
+          "text": "the primary electric heater 320 may be configured to indirectly control the tank pressure",
+          "field": "description",
+          "locator": "Description，FIG. 14后关于primary electric heater 320的段落；页面内搜索完整摘录。",
+          "language": "en",
+          "translated": false,
+          "source_url": "https://patents.google.com/patent/US20220136656A1/en",
+          "retrieved_at": "2026-09-12",
+          "checksum": "fnv1a32:17addcf0"
+        }
+      ],
+      "match_terms": [
+        "liquid hydrogen",
+        "加热",
+        "pressure",
+        "heater"
+      ],
+      "score": 6,
+      "relevance_reason": "对象词命中 1 项，重点词命中 3 项；分数用于当前样本排序"
+    }
+  ],
+  "analysis": {
+    "groups": [
+      {
+        "group_id": "group-0",
+        "label": "加热与增压",
+        "record_ids": [
+          "pat-US20240175550A1",
+          "pat-US20220136656A1"
+        ],
+        "evidence_ids": [
+          "ev-US20240175550A1-3bedfb99",
+          "ev-US20220136656A1-db62d1e6"
+        ],
+        "reason": "依据所列原文片段中可识别的结构/过程词初步归类，同一记录可进入多个组；待专业复核"
+      },
+      {
+        "group_id": "group-1",
+        "label": "放气与气体利用",
+        "record_ids": [
+          "pat-US20070029330A1"
+        ],
+        "evidence_ids": [
+          "ev-US20070029330A1-0ceecbb7"
+        ],
+        "reason": "依据所列原文片段中可识别的结构/过程词初步归类，同一记录可进入多个组；待专业复核"
+      },
+      {
+        "group_id": "group-2",
+        "label": "主动制冷",
+        "record_ids": [
+          "pat-US20050132745A1"
+        ],
+        "evidence_ids": [
+          "ev-US20050132745A1-c88c86a3"
+        ],
+        "reason": "依据所列原文片段中可识别的结构/过程词初步归类，同一记录可进入多个组；待专业复核"
+      },
+      {
+        "group_id": "group-3",
+        "label": "换热与喷淋",
+        "record_ids": [
+          "pat-US20240178420A1"
+        ],
+        "evidence_ids": [
+          "ev-US20240178420A1-14a5ec26"
+        ],
+        "reason": "依据所列原文片段中可识别的结构/过程词初步归类，同一记录可进入多个组；待专业复核"
+      }
+    ],
+    "claims": [
+      {
+        "claim_id": "cl-US20050132745A1",
+        "text": "记录 US20050132745A1 的可见材料包含：having an orifice pulse tube refrigerator",
+        "type": "source_fact",
+        "evidence_ids": [
+          "ev-US20050132745A1-c88c86a3"
+        ],
+        "scope": "当前公开记录的有限片段",
+        "limitations": "未覆盖完整说明书及权利要求，不能据此确定保护范围",
+        "review_status": "原文摘录，待用户阅读"
+      },
+      {
+        "claim_id": "cl-US20070029330A1",
+        "text": "记录 US20070029330A1 的可见材料包含：A liquid hydrogen storage tank is provided with a boil-off release pressure above the critical pressure.",
+        "type": "source_fact",
+        "evidence_ids": [
+          "ev-US20070029330A1-0ceecbb7"
+        ],
+        "scope": "当前公开记录的有限片段",
+        "limitations": "未覆盖完整说明书及权利要求，不能据此确定保护范围",
+        "review_status": "原文摘录，待用户阅读"
+      },
+      {
+        "claim_id": "cl-US20240175550A1",
+        "text": "记录 US20240175550A1 的可见材料包含：turn on the evaporator 15 or the heater so that the pressure of the inner tank 14 rises to a predetermined pressure.",
+        "type": "source_fact",
+        "evidence_ids": [
+          "ev-US20240175550A1-3bedfb99"
+        ],
+        "scope": "当前公开记录的有限片段",
+        "limitations": "未覆盖完整说明书及权利要求，不能据此确定保护范围",
+        "review_status": "原文摘录，待用户阅读"
+      },
+      {
+        "claim_id": "cl-US20240178420A1",
+        "text": "记录 US20240178420A1 的可见材料包含：liquid hydrogen supplied from the liquid hydrogen pump passes through the heat exchanger and is sprayed into a gaseous hydrogen section",
+        "type": "source_fact",
+        "evidence_ids": [
+          "ev-US20240178420A1-14a5ec26"
+        ],
+        "scope": "当前公开记录的有限片段",
+        "limitations": "未覆盖完整说明书及权利要求，不能据此确定保护范围",
+        "review_status": "原文摘录，待用户阅读"
+      },
+      {
+        "claim_id": "cl-US20220136656A1",
+        "text": "记录 US20220136656A1 的可见材料包含：the primary electric heater 320 may be configured to indirectly control the tank pressure",
+        "type": "source_fact",
+        "evidence_ids": [
+          "ev-US20220136656A1-db62d1e6"
+        ],
+        "scope": "当前公开记录的有限片段",
+        "limitations": "未覆盖完整说明书及权利要求，不能据此确定保护范围",
+        "review_status": "原文摘录，待用户阅读"
+      }
+    ],
+    "opportunities": [
+      {
+        "claim_id": "question-group-0",
+        "text": "加热与增压在你的工况下需要哪些参数与验证条件？请补充完整说明书、论文和实验依据后比较。",
+        "type": "research_question",
+        "evidence_ids": [
+          "ev-US20240175550A1-3bedfb99",
+          "ev-US20220136656A1-db62d1e6"
+        ],
+        "scope": "当前样本引出的研究问题",
+        "limitations": "材料不足以证明性能优劣、创新空白或自由实施",
+        "review_status": "待验证"
+      },
+      {
+        "claim_id": "question-group-1",
+        "text": "放气与气体利用在你的工况下需要哪些参数与验证条件？请补充完整说明书、论文和实验依据后比较。",
+        "type": "research_question",
+        "evidence_ids": [
+          "ev-US20070029330A1-0ceecbb7"
+        ],
+        "scope": "当前样本引出的研究问题",
+        "limitations": "材料不足以证明性能优劣、创新空白或自由实施",
+        "review_status": "待验证"
+      },
+      {
+        "claim_id": "question-group-2",
+        "text": "主动制冷在你的工况下需要哪些参数与验证条件？请补充完整说明书、论文和实验依据后比较。",
+        "type": "research_question",
+        "evidence_ids": [
+          "ev-US20050132745A1-c88c86a3"
+        ],
+        "scope": "当前样本引出的研究问题",
+        "limitations": "材料不足以证明性能优劣、创新空白或自由实施",
+        "review_status": "待验证"
+      },
+      {
+        "claim_id": "question-group-3",
+        "text": "换热与喷淋在你的工况下需要哪些参数与验证条件？请补充完整说明书、论文和实验依据后比较。",
+        "type": "research_question",
+        "evidence_ids": [
+          "ev-US20240178420A1-14a5ec26"
+        ],
+        "scope": "当前样本引出的研究问题",
+        "limitations": "材料不足以证明性能优劣、创新空白或自由实施",
+        "review_status": "待验证"
+      }
+    ]
+  },
+  "stats": {
+    "count": 5,
+    "years": {
+      "2005": 1,
+      "2007": 1,
+      "2022": 1,
+      "2024": 2
+    },
+    "applicants": {
+      "Sierra Lobo Inc": 1,
+      "H2creo Corp": 1,
+      "Korea Aerospace Research Institute KARI": 1,
+      "Universal Hydrogen Co": 1
+    },
+    "unknown_applicants": 1,
+    "evidence_count": 6,
+    "missing_claims": 5
+  },
+  "warnings": [],
+  "dataset_scope": {
+    "input_count": 8,
+    "unique_count": 8,
+    "duplicate_count": 0,
+    "source_urls": [
+      "https://patents.google.com/patent/US20220136656A1/en",
+      "https://patents.google.com/patent/US20070029330A1/en",
+      "https://patents.google.com/patent/US20050132745A1/en",
+      "https://patents.google.com/patent/US20240178420A1/en",
+      "https://patents.google.com/patent/US20240175550A1/en",
+      "https://patents.google.com/patent/US20150044523A1/en",
+      "https://patents.google.com/patent/US20110212355A1/en",
+      "https://patents.google.com/patent/WO2016131141A1/en"
+    ],
+    "retrieved_dates": [
+      "2026-09-12"
+    ],
+    "data_modes": [
+      "public_snapshot"
+    ]
+  },
+  "report_versions": [
+    {
+      "report_id": "report-task-mtyite91-wr7au-1",
+      "version": 1,
+      "query_version": 1,
+      "created_at": "2026-09-12T15:09:12.422Z",
+      "user_edited": false,
+      "edit": {},
+      "markdown": "# 液氢储罐压力调节方案探索：专利情报探索记录\n\n任务 task-mtyite91-wr7au｜查询版本 1｜分析更新时间 2026-09-12T15:09:12.421Z\n\n数据模式：公开记录快照；推理模式：规则处理。\n\n## 一、研究问题与资料范围\n\n本次任务围绕液氢储罐压力调节方案探索整理已取得专利材料。载入 8 条记录，按公开编号去重后 8 条，当前筛选并保留 5 条；同族关系未核验，不进行专利族合并。数据取得日期为 2026-09-12，当前记录共含 6 条证据片段。\n\n## 二、检索策略与筛选条件\n\n本次使用可复核的词项策略筛选本地样本。检索式：(\"液氢\" OR \"liquid hydrogen\" OR \"LH2\") AND (\"压力\" OR \"加热\" OR \"放气\" OR \"冷凝\" OR \"pressure\" OR \"heater\" OR \"vent\" OR \"recondens\" OR \"reliquef\")。公开日期范围：不限 至 不限；保留日期缺失记录；人工排除 0 条。该检索式表示本地组合逻辑，外部平台查询需另行核对语法与覆盖范围。\n\n## 三、代表记录与证据\n\n### US20050132745A1 No-vent liquid hydrogen storage and delivery system\n\n该记录的可核查范围为有限原文摘录，未取得完整权利要求。公开日期：2005-06-23；来源所列原始申请人：Sierra Lobo Inc；记录模式：公开记录快照；法律状态：未取得；专利族：未取得。\n\n资料人工转述：该文献采用小孔脉管制冷机配合液氢储存容器，其冷却系统旨在将液氢维持于饱和温度或以下。该记录支持主动冷却方案分组，现有短摘录没有证明独立再冷凝回路或实际零蒸发率。\n\n[ev-US20050132745A1-c88c86a3] having an orifice pulse tube refrigerator\n\n定位：Abstract，第1句中的设备构成。；语言：en；原文；校验：fnv1a32:5817013b。来源：https://patents.google.com/patent/US20050132745A1/en。\n\n[ev-US20050132745A1-b262c5d8] maintain the liquid hydrogen in the vessel at or below its saturation temperature.\n\n定位：Abstract，第2句结尾。；语言：en；原文；校验：fnv1a32:0a9da820。来源：https://patents.google.com/patent/US20050132745A1/en。\n\n### US20070029330A1 Liquid hydrogen tank with a release pressure above the critical pressure\n\n该记录的可核查范围为有限原文摘录，未取得完整权利要求。公开日期：2007-02-08；来源所列原始申请人：缺失；记录模式：公开记录快照；法律状态：未取得；专利族：未取得。\n\n资料人工转述：该文献将液氢储罐的蒸发气释放压力设在临界压力以上，可用于学习释放阈值这一设计变量。样本未摘录完整权利要求或独立验证其性能，因此不能据此给出现有设备的压力设定建议。\n\n[ev-US20070029330A1-0ceecbb7] A liquid hydrogen storage tank is provided with a boil-off release pressure above the critical pressure.\n\n定位：Abstract，第1句。；语言：en；原文；校验：fnv1a32:87d1614f。来源：https://patents.google.com/patent/US20070029330A1/en。\n\n### US20240175550A1 Liquid Hydrogen Tank Control Device and Control Method Thereof\n\n该记录的可核查范围为有限原文摘录，未取得完整权利要求。公开日期：2024-05-30；来源所列原始申请人：H2creo Corp；记录模式：公开记录快照；法律状态：未取得；专利族：未取得。\n\n资料人工转述：该文献说明控制板可接通蒸发器或加热器，使内罐压力升至预定值。当前证据用于讨论加热执行与压力目标的联系，不能证明其采用特定先进控制算法或达到某一跟踪误差。\n\n[ev-US20240175550A1-3bedfb99] turn on the evaporator 15 or the heater so that the pressure of the inner tank 14 rises to a predetermined pressure.\n\n定位：Description，FIG.7之后，The control board 112 may be configured to control operation of a switch段落。；语言：en；原文；校验：fnv1a32:a259ac43。来源：https://patents.google.com/patent/US20240175550A1/en。\n\n### US20240178420A1 System for regulating pressure in liquid hydrogen fuel tank for a fuel cell electric vehicle\n\n该记录的可核查范围为有限原文摘录，未取得完整权利要求。公开日期：2024-05-30；来源所列原始申请人：Korea Aerospace Research Institute KARI；记录模式：公开记录快照；法律状态：未取得；专利族：未取得。\n\n资料人工转述：该文献记载由液氢泵供给的液氢经过换热器后喷入气相区的流路，可用于探索换热与喷淋方案。当前片段支持流路构成，未形成对降压速度、系统效率或航空适用性的验证。\n\n[ev-US20240178420A1-14a5ec26] liquid hydrogen supplied from the liquid hydrogen pump passes through the heat exchanger and is sprayed into a gaseous hydrogen section\n\n定位：Abstract，第2段，first flow path的描述。；语言：en；原文；校验：fnv1a32:0068839e。来源：https://patents.google.com/patent/US20240178420A1/en。\n\n### US20220136656A1 Systems and methods for storing liquid hydrogen\n\n该记录的可核查范围为有限原文摘录，未取得完整权利要求。公开日期：2022-05-05；来源所列原始申请人：Universal Hydrogen Co；记录模式：公开记录快照；法律状态：未取得；专利族：未取得。\n\n资料人工转述：该文献记载通过罐内主电加热器调节氢的温度，间接控制罐压。当前短摘录支持加热调压这一方案要素，未提供闭环性能或能耗对比。\n\n[ev-US20220136656A1-db62d1e6] the primary electric heater 320 may be configured to indirectly control the tank pressure\n\n定位：Description，FIG. 14后关于primary electric heater 320的段落；页面内搜索完整摘录。；语言：en；原文；校验：fnv1a32:17addcf0。来源：https://patents.google.com/patent/US20220136656A1/en。\n\n## 四、初步方案分组与待验证问题\n\n加热与增压包含 2 条记录。依据所列原文片段中可识别的结构/过程词初步归类，同一记录可进入多个组；待专业复核。依据：[ev-US20240175550A1-3bedfb99] [ev-US20220136656A1-db62d1e6]。\n\n放气与气体利用包含 1 条记录。依据所列原文片段中可识别的结构/过程词初步归类，同一记录可进入多个组；待专业复核。依据：[ev-US20070029330A1-0ceecbb7]。\n\n主动制冷包含 1 条记录。依据所列原文片段中可识别的结构/过程词初步归类，同一记录可进入多个组；待专业复核。依据：[ev-US20050132745A1-c88c86a3]。\n\n换热与喷淋包含 1 条记录。依据所列原文片段中可识别的结构/过程词初步归类，同一记录可进入多个组；待专业复核。依据：[ev-US20240178420A1-14a5ec26]。\n\n加热与增压在你的工况下需要哪些参数与验证条件？请补充完整说明书、论文和实验依据后比较。 依据：[ev-US20240175550A1-3bedfb99] [ev-US20220136656A1-db62d1e6]。\n\n放气与气体利用在你的工况下需要哪些参数与验证条件？请补充完整说明书、论文和实验依据后比较。 依据：[ev-US20070029330A1-0ceecbb7]。\n\n主动制冷在你的工况下需要哪些参数与验证条件？请补充完整说明书、论文和实验依据后比较。 依据：[ev-US20050132745A1-c88c86a3]。\n\n换热与喷淋在你的工况下需要哪些参数与验证条件？请补充完整说明书、论文和实验依据后比较。 依据：[ev-US20240178420A1-14a5ec26]。\n\n## 五、边界与下一步\n\n现有材料支持对已载入记录进行阅读和初步整理。5 条保留记录未提供权利要求；后续需要补充全文、核对法律状态和专利族，并用独立检索检查遗漏。本次结果不用于自动判定侵权、授权前景、自由实施或全球创新空白。\n\n执行记录：规则处理 9.014 ms；实时模型调用 0 次；付费接口调用 0 次。耗时只对应当前环境和样本。"
+    }
+  ],
+  "selected_notes": {},
+  "timings": {
+    "processing_ms": 9.014
+  },
+  "cost": {
+    "model_calls": 0,
+    "api_calls": 0,
+    "paid_cost": 0
+  },
+  "limitations": [
+    "当前结果仅代表本次载入样本，未执行全球专利全量检索",
+    "使用词项规则进行筛选与方案初分组，未调用实时语言模型",
+    "缺失的法律状态、专利族及权利要求保留空值"
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "document": "产品与技术说明.docx",
+  "checked_at": "2026-09-12",
+  "document_sha256": "ffc71e5b0b819d3926f2df7f21f6bf707bf9f641f3a5f55636ba712f611f219c",
+  "pages_rendered": 5,
+  "pages_visually_inspected": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "visual_result": "pass",
+  "visual_checks": [
+    "全页文字可辨、无缺字方框",
+    "标题与正文层次清楚，页码居中",
+    "表格未裁切，运行模式标签完整",
+    "无近空白尾页，无孤立标题",
+    "来源超链接有可读标签"
+  ],
+  "structural_checks": {
+    "page_size_twips": {
+      "w": "11906",
+      "h": "16838"
+    },
+    "margins_twips": {
+      "top": "1417",
+      "right": "1417",
+      "bottom": "1417",
+      "left": "1417",
+      "header": "720",
+      "footer": "709",
+      "gutter": "0"
+    },
+    "table_count": 1,
+    "external_hyperlink_count": 3,
+    "inherited_paragraph_borders": 0
+  },
+  "render_directory": "qa/render_final",
+  "rendering": "render_docx.py using LibreOffice; DOCX声明宋体/黑体，当前Linux视觉检查以Noto Serif CJK SC/Noto Sans CJK SC替代。目标办公软件字体可能影响分页。",
+  "facts_basis": "只读核对当前 core/engine.mjs、core/docx.mjs、core/download.mjs、adapters/*.mjs、cli/patent.mjs、scripts/serve.mjs、app/page.tsx、data_sources.md与competitive_sources.md；核心变化由维护者消息补充并对下载模块只读核对。",
+  "source_urls": [
+    "https://support.google.com/faqs/answer/7049588?hl=en",
+    "https://www.wipo.int/en/web/patentscope/w/news/2026/patentscope-ai-assisted-search-now-available",
+    "https://www.epo.org/en/searching-for-patents/data/web-services/ops"
+  ],
+  "scope_limits": [
+    "此检查只覆盖产品与技术说明文档",
+    "未执行真人访谈或课堂试点",
+    "未宣称浏览器下载已落盘",
+    "不以本文替代软件验收日志",
+    "未发布任何对外站点或仓库"
+  ]
+}

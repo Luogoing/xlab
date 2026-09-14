@@ -1,0 +1,79 @@
+{
+  "verified_at_utc": "2026-09-14T01:13:38.865227+00:00",
+  "platform": "Linux-6.18.44-x86_64-with-glibc2.39",
+  "node": "v24.19.0",
+  "python": "3.12.14",
+  "pnpm_on_path": "11.19.0",
+  "package_manager_declared": "pnpm@11.25.0",
+  "typecheck": {
+    "command": [
+      "node",
+      "node_modules/typescript/bin/tsc",
+      "--noEmit",
+      "--pretty",
+      "false"
+    ],
+    "exit_code": 0
+  },
+  "dependencies_reinstalled_this_turn": false,
+  "browser_retested_this_turn": false,
+  "cold_start": {
+    "started_at": "2026-09-14T01:12:33.966Z",
+    "node": "v24.19.0",
+    "temporary_directory": "/tmp/patent-lab-cold-PqsnV2",
+    "installed_dependencies": false,
+    "checks": [
+      {
+        "name": "clean runtime entry",
+        "status": 200
+      },
+      {
+        "name": "asset /favicon.svg",
+        "status": 200
+      },
+      {
+        "name": "asset /assets/index-CuSN97kq.js",
+        "status": 200
+      },
+      {
+        "name": "asset /assets/index-BI7X-oJN.css",
+        "status": 200
+      },
+      {
+        "name": "health",
+        "result": {
+          "status": "ok",
+          "version": "0.1.0",
+          "data_mode": "public_snapshot_or_user_import",
+          "inference_mode": "rules"
+        }
+      },
+      {
+        "name": "offline CLI without installed node_modules or model credentials",
+        "result": {
+          "task_id": "task-mu0jt6qn-l78bj",
+          "records": 5,
+          "evidence": 6,
+          "data_mode": "public_snapshot",
+          "inference_mode": "rules",
+          "output": "/tmp/patent-lab-cold-PqsnV2/out",
+          "timings": {
+            "processing_ms": 20.158
+          }
+        }
+      },
+      {
+        "name": "HTTP DOCX exact bytes",
+        "status": 200,
+        "bytes": 21537,
+        "content_disposition": "attachment; filename=\"report.docx\"; filename*=UTF-8''cold-start.docx"
+      }
+    ],
+    "passed": true,
+    "server_output": "专利研习运行于 http://127.0.0.1:3087 （本机入口）\n",
+    "completed_at": "2026-09-14T01:12:34.778Z"
+  },
+  "data_sha256": "adbc602d20b14f7de5336b5c96067b07315ab447f3d38479aa09065d15a7a177",
+  "test_file": "artifacts/test-log-2026-09-14.tap",
+  "portable_build_log": "artifacts/portable-build-2026-09-14.log"
+}

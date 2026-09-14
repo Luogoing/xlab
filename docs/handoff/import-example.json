@@ -1,0 +1,43 @@
+{
+  "records": [
+    {
+      "record_id": "pat-US20220136656A1",
+      "publication_number": "US20220136656A1",
+      "title": "Systems and methods for storing liquid hydrogen",
+      "abstract_excerpt": null,
+      "summary_zh": "该文献记载通过罐内主电加热器调节氢的温度，间接控制罐压。当前短摘录支持加热调压这一方案要素，未提供闭环性能或能耗对比。",
+      "applicants": [
+        "Universal Hydrogen Co"
+      ],
+      "publication_date": "2022-05-05",
+      "source_url": "https://patents.google.com/patent/US20220136656A1/en",
+      "retrieved_at": "2026-09-12",
+      "language": "en",
+      "topic_tags": [
+        "液氢",
+        "储罐",
+        "压力调节",
+        "加热",
+        "liquid hydrogen",
+        "heater",
+        "pressure control"
+      ],
+      "source": "Google Patents",
+      "data_mode": "public_snapshot",
+      "claims": null,
+      "legal_status": null,
+      "family_id": null,
+      "evidence": [
+        {
+          "evidence_id": "ev-US20220136656A1-1",
+          "text": "the primary electric heater 320 may be configured to indirectly control the tank pressure",
+          "field": "description",
+          "locator": "Description，FIG. 14后关于primary electric heater 320的段落；页面内搜索完整摘录。",
+          "language": "en",
+          "translated": false
+        }
+      ],
+      "notes": "摘要未保存；证据为说明书短摘录。申请人字段映射见数据集说明。"
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "checked_at_utc": "2026-09-14T01:22:19.356392+00:00",
+  "check_scope": "source content before packaging; final archive CRC and manifest checked by packaging script after write",
+  "docx_openxml_packages_checked": [
+    "artifacts/battery/report.docx",
+    "artifacts/http-download/cold-start.docx",
+    "artifacts/hydrogen/report.docx",
+    "docs/pilot/课堂试点与评价说明.docx",
+    "docs/product/产品与技术说明.docx"
+  ],
+  "json_files_parsed": [
+    ".openai/hosting.json",
+    "artifacts/PILOT_QA.json",
+    "artifacts/PRODUCT_DOC_QA.json",
+    "artifacts/battery/task.json",
+    "artifacts/cold-start-2026-09-12.json",
+    "artifacts/cold-start.json",
+    "artifacts/data_path_validation.json",
+    "artifacts/data_validation.json",
+    "artifacts/handoff/environment-verification.json",
+    "artifacts/hydrogen/task.json",
+    "components.json",
+    "data/patent_records.json",
+    "docs/handoff/import-example.json",
+    "drizzle/meta/_journal.json",
+    "package.json",
+    "tsconfig.json"
+  ],
+  "credential_pattern_matches": [],
+  "credential_scan_limit": "pattern scan plus explicit exclusion of environment and runtime cache files; not a guarantee of all possible sensitive strings",
+  "excluded_directories": [
+    ".git",
+    ".next",
+    ".sites-runtime",
+    ".vite",
+    ".wrangler",
+    "__pycache__",
+    "dist",
+    "node_modules"
+  ],
+  "passed": true
+}

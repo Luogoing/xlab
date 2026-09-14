@@ -1,0 +1,56 @@
+{
+  "started_at": "2026-09-12T15:17:58.127Z",
+  "node": "v24.19.0",
+  "temporary_directory": "/tmp/patent-lab-cold-Rw9CbV",
+  "installed_dependencies": false,
+  "checks": [
+    {
+      "name": "clean runtime entry",
+      "status": 200
+    },
+    {
+      "name": "asset /favicon.svg",
+      "status": 200
+    },
+    {
+      "name": "asset /assets/index-D4W0qDRw.js",
+      "status": 200
+    },
+    {
+      "name": "asset /assets/index-BI7X-oJN.css",
+      "status": 200
+    },
+    {
+      "name": "health",
+      "result": {
+        "status": "ok",
+        "version": "0.1.0",
+        "data_mode": "public_snapshot_or_user_import",
+        "inference_mode": "rules"
+      }
+    },
+    {
+      "name": "offline CLI without installed node_modules or model credentials",
+      "result": {
+        "task_id": "task-mtyj4o27-huajk",
+        "records": 5,
+        "evidence": 6,
+        "data_mode": "public_snapshot",
+        "inference_mode": "rules",
+        "output": "/tmp/patent-lab-cold-Rw9CbV/out",
+        "timings": {
+          "processing_ms": 6.825
+        }
+      }
+    },
+    {
+      "name": "HTTP DOCX exact bytes",
+      "status": 200,
+      "bytes": 21536,
+      "content_disposition": "attachment; filename=\"report.docx\"; filename*=UTF-8''cold-start.docx"
+    }
+  ],
+  "passed": true,
+  "server_output": "专利研习运行于 http://127.0.0.1:3087 （本机入口）\n",
+  "completed_at": "2026-09-12T15:17:58.378Z"
+}

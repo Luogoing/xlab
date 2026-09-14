@@ -1,0 +1,48 @@
+{
+  "date": "2026-09-12",
+  "source_task_read": "附件489行已分三段完整读取",
+  "document": "课堂试点与评价说明.docx",
+  "page_count": 8,
+  "render": "render_docx.py 成功生成8页PNG和内部QA PDF",
+  "visual_review": "版本1.1重渲染8页，并逐页查看page-1至page-8；枚举、三条候选记录与介质适用性说明显示正常，无明显重叠、缺字或裁切。",
+  "first_render_fixes": [
+    "删除Title样式继承的蓝色段落边框",
+    "显式设置表格grid列宽",
+    "消除末页仅一段的冗余收尾"
+  ],
+  "font_note": "DOCX声明宋体/黑体和Times New Roman。当前渲染环境无宋体黑体，使用FONTCONFIG_FILE将SimSun和SimHei分别映射到官方Noto Serif CJK SC和Noto Sans CJK SC；不宣称与Windows宋体黑体逐字等宽。",
+  "csv_checks": [
+    {
+      "file": "task_records.csv",
+      "header_count": 25,
+      "participant_rows": 0
+    },
+    {
+      "file": "score_records.csv",
+      "header_count": 19,
+      "participant_rows": 0
+    },
+    {
+      "file": "feedback_records.csv",
+      "header_count": 13,
+      "participant_rows": 0
+    }
+  ],
+  "manual_packet_source": "/workspace/scratch/e84e68efe60d/research/patent_records.json",
+  "manual_packet_source_sha256": "adbc602d20b14f7de5336b5c96067b07315ab447f3d38479aa09065d15a7a177",
+  "manual_packet_counts": {
+    "LH": 5,
+    "BAT": 3
+  },
+  "human_testing": "未实施；课堂可用性和评分人一致性待验证",
+  "software_testing": "本子任务未执行应用按钮或软件功能验收",
+  "document_version": "1.1",
+  "final_render_directory": "qa/render_v1_1",
+  "v1_1_changes": [
+    "data_mode同步public_snapshot/user_import/live/test_data",
+    "inference_mode同步rules/live_model/replay；未运行系统时字段留空并在notes记载",
+    "迁移题明确3条候选材料；流道及流体进出口摘录不预设液体介质适用性",
+    "学生答题页与电池公开记录包同步材料边界"
+  ],
+  "v1_1_content_check": "Word含正式枚举和3条候选材料说明，旧枚举已移除；CSV仍仅表头。"
+}
