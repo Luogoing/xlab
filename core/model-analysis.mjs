@@ -1,5 +1,5 @@
 import {hash,AppError} from './engine.mjs';
-export const PROMPT_VERSION='patent-evidence-0.2.0';
+export const PROMPT_VERSION='patent-evidence-0.2.1';
 const string={type:'string'},strings={type:'array',items:string};
 const object=properties=>({type:'object',properties,required:Object.keys(properties),additionalProperties:false});
 export const STRATEGY_SCHEMA=object({object_terms:strings,focus_terms:strings,exclude_terms:strings,rationale:string});

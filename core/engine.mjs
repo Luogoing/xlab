@@ -1,8 +1,9 @@
+import {compareEvidence} from './comparison.mjs';
 /** Shared deterministic core, used unchanged by web, CLI and JSON-RPC adapter. */
 import {effectiveAnalysis,contextFingerprint,validateAnalysis} from './model-analysis.mjs';
 export const MAX_FILE_BYTES=32*1024*1024;
-export const VERSION = '0.2.0';
-export const DATA_MODES = {public_snapshot:'公开记录快照',user_import:'用户导入',test_data:'测试数据',live:'实时数据'};
+export const VERSION = '0.2.1';
+export const DATA_MODES = {public_snapshot:'公开记录快照',user_import:'用户导入',test_data:'测试数据',live:'实时数据',archived:'已采集资料（回放）'};
 export const INFERENCE_MODES = {rules:'规则处理',live_model:'实时模型',replay:'已有结果回放'};
 export class AppError extends Error {constructor(code,message,retryable=false){super(message);this.code=code;this.retryable=retryable;this.correlation_id=`err-${Date.now().toString(36)}`;}}
 export const errorResult=e=>({code:e.code||'INTERNAL_ERROR',message:e.message||'处理失败',retryable:!!e.retryable,correlation_id:e.correlation_id||`err-${Date.now().toString(36)}`});
@@ -94,6 +95,7 @@ export function reportMarkdown(task,edit={}){
  for(const r of task.records){lines.push(`### ${r.publication_number} ${r.title}`,'',`该记录的可核查范围为${r.content_scope}。公开日期：${r.publication_date||'缺失'}；来源所列原始申请人：${r.applicants.join('、')||'缺失'}；记录模式：${DATA_MODES[r.data_mode]}；法律状态：${r.legal_status||'未取得'}；专利族：${r.family_id||'未取得'}。`,'');if(r.summary_zh)lines.push(`资料人工转述：${r.summary_zh}`,'');for(const e of r.evidence.filter((e,i)=>!task.source_summary||i<2||cited.has(e.evidence_id)))lines.push(`[${e.evidence_id}] ${e.text}`,'',`定位：${e.locator}；语言：${e.language}；${e.translated?'译文':'原文'}；校验：${e.checksum}。来源：${e.source_url||'未提供，请补充'}。`,'');if(!r.evidence.length)lines.push('现有记录缺少可引用片段，暂不形成内容结论。','');if(task.selected_notes?.[r.record_id])lines.push(`用户筛选理由：${task.selected_notes[r.record_id]}`,'');}
  lines.push('## 四、初步方案分组与待验证问题','');for(const g of active.groups)lines.push(`${g.label}包含 ${g.record_ids.length} 条记录。${g.reason}。依据：${g.evidence_ids.map(id=>`[${id}]`).join(' ' )||'缺少片段'}。`,'');for(const q of active.opportunities)lines.push(`${q.text} 依据：${q.evidence_ids.map(id=>`[${id}]`).join(' ')}。`,'');
  if(active.mode!=='rules')for(const c of active.claims)lines.push(`${c.review_status}：${c.text} 依据：${c.evidence_ids.map(id=>'['+id+']').join(' ')}。适用范围：${c.scope}；限制：${c.limitations}`,'');
+ lines.push('### 保留方案横向对照','','以下逐条对照当前证据的覆盖与归类，不表示性能高低。','');for(const row of compareEvidence(task.records,active)){const coverage=[row.coverage.abstract?'摘要':null,row.coverage.claims?'权利要求':null,row.coverage.description?'说明书':null].filter(Boolean).join('、')||'无正文';lines.push(`${row.publication_number} ${row.title}：原文覆盖 ${coverage}，共 ${row.evidence_count} 个片段。当前归类：${row.routes.map(r=>r.label+' '+r.evidence_ids.map(id=>'['+id+']').join(' ')).join('；')||'未归类，需阅读原文'}。`,'');}
  if(edit.conclusion)lines.push('用户研究判断（用户编辑，待核验）：',text(edit.conclusion),'');
  lines.push('## 五、边界与下一步','',`现有材料支持对已载入记录进行阅读和初步整理。${task.stats.missing_claims} 条保留记录未提供权利要求；后续需要补充全文、核对法律状态和专利族，并用独立检索检查遗漏。本次结果不用于自动判定侵权、授权前景、自由实施或全球创新空白。`,'',`执行记录：规则处理 ${task.timings.processing_ms} ms；实时模型调用 ${task.cost.model_calls} 次；数据接口调用 ${task.cost.api_calls} 次。耗时只对应当前环境和样本。`);
  return lines.join('\n');
@@ -106,8 +108,8 @@ export function restoreWorkspace(raw,knownSnapshot){
  if(![1,2].includes(s?.schema)||!s.dataset?.records||typeof s.topic!=='string'||!s.strategy)throw new AppError('INVALID_BACKUP','任务备份缺少必要字段');
  const dataset=normalizeRecords(s.dataset.records,'user_import'),known=knownSnapshot?normalizeRecords(knownSnapshot,'public_snapshot').records:[];
  const signature=r=>JSON.stringify([r.publication_number,r.title,r.summary_zh,r.applicants,r.publication_date,r.source_url,r.abstract_excerpt,r.evidence.map(e=>[e.text,e.field,e.locator])]);
- dataset.records=dataset.records.map(r=>{const k=known.find(x=>signature(x)===signature(r));return k?{...r,data_mode:'public_snapshot',verification:k.verification}:r;});
- dataset.data_mode=dataset.records.length&&dataset.records.every(r=>r.data_mode==='public_snapshot')?'public_snapshot':'user_import';
+ dataset.records=dataset.records.map(r=>{const k=known.find(x=>signature(x)===signature(r));return k?{...r,data_mode:'public_snapshot',verification:k.verification}:s.schema===2&&r.source_metadata?.provider==='patentics_gateway'?{...r,data_mode:'archived',verification:'备份中的网关采集记录，本次未重新获取'}:r;});
+ dataset.data_mode=dataset.records.length&&dataset.records.every(r=>r.data_mode==='public_snapshot')?'public_snapshot':dataset.records.length&&dataset.records.every(r=>r.data_mode==='archived')?'archived':'user_import';
  dataset.input_count=Number.isInteger(s.dataset.input_count)&&s.dataset.input_count>=dataset.unique_count?s.dataset.input_count:dataset.unique_count;dataset.duplicate_count=dataset.input_count-dataset.unique_count;
  dataset.warnings=Array.isArray(s.dataset.warnings)?s.dataset.warnings.filter(w=>w&&typeof w.message==='string'):[];
  const strategy=normalizeStrategy(s.strategy,s.topic);let task=null;

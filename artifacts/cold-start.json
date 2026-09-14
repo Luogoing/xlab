@@ -1,7 +1,7 @@
 {
-  "started_at": "2026-09-14T02:40:35.878Z",
+  "started_at": "2026-09-14T06:10:22.534Z",
   "node": "v24.13.0",
-  "temporary_directory": "C:\\Users\\zhang\\AppData\\Local\\Temp\\patent-lab-cold-J6uThI",
+  "temporary_directory": "C:\\Users\\zhang\\AppData\\Local\\Temp\\patent-lab-cold-3kNBie",
   "installed_dependencies": false,
   "checks": [
     {
@@ -13,42 +13,44 @@
       "status": 200
     },
     {
-      "name": "asset /assets/index-CGgM9vdd.js",
+      "name": "asset /assets/index-CVopzqtI.js",
       "status": 200
     },
     {
-      "name": "asset /assets/index-5qeg88NQ.css",
+      "name": "asset /assets/index-DB48-h-a.css",
       "status": 200
     },
     {
       "name": "health",
       "result": {
         "status": "ok",
-        "version": "0.2.0"
+        "version": "0.2.1",
+        "app_id": "patent-lab-local",
+        "pid": 41912
       }
     },
     {
       "name": "offline CLI without installed node_modules or model credentials",
       "result": {
-        "task_id": "task-mu0mye02-hcqch",
+        "task_id": "task-mu0ug620-2i6v8",
         "records": 5,
         "evidence": 6,
         "data_mode": "public_snapshot",
         "inference_mode": "rules",
-        "output": "C:\\Users\\zhang\\AppData\\Local\\Temp\\patent-lab-cold-J6uThI\\out",
+        "output": "C:\\Users\\zhang\\AppData\\Local\\Temp\\patent-lab-cold-3kNBie\\out",
         "timings": {
-          "processing_ms": 7.091
+          "processing_ms": 7
         }
       }
     },
     {
       "name": "HTTP DOCX exact bytes",
       "status": 200,
-      "bytes": 21689,
+      "bytes": 24138,
       "content_disposition": "attachment; filename=\"report.docx\"; filename*=UTF-8''cold-start.docx"
     }
   ],
   "passed": true,
-  "server_output": "专利研习 0.2：http://127.0.0.1:3087\n",
-  "completed_at": "2026-09-14T02:40:36.230Z"
+  "server_output": "专利研习 0.2.1：http://127.0.0.1:3087\n",
+  "completed_at": "2026-09-14T06:10:23.055Z"
 }

@@ -19,7 +19,7 @@ def scan(p):
   if any(re.search(x,t) for x in patterns):raise RuntimeError('Credential pattern in '+p.name)
 for p in files:scan(p)
 def pack(name,chosen):
- manifest={'schema':2,'software_version':'0.2.0','algorithm':'sha256','created_at_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'files':[{'path':p.relative_to(root).as_posix(),'bytes':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()} for p in chosen]}
+ manifest={'schema':2,'software_version':'0.2.1','algorithm':'sha256','created_at_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'files':[{'path':p.relative_to(root).as_posix(),'bytes':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()} for p in chosen]}
  dest=out/name
  with zipfile.ZipFile(dest,'w',zipfile.ZIP_DEFLATED,compresslevel=9) as z:
   for p in chosen:z.write(p,'patent-intelligence/'+p.relative_to(root).as_posix())
@@ -30,9 +30,9 @@ def pack(name,chosen):
    b=z.read('patent-intelligence/'+x['path']);assert len(b)==x['bytes'] and hashlib.sha256(b).hexdigest()==x['sha256']
  sha=hashlib.sha256(dest.read_bytes()).hexdigest();(out/(name+'.sha256')).write_text(sha+'  '+name+'\n',encoding='utf-8')
  return {'file':name,'files':len(chosen)+1,'bytes':dest.stat().st_size,'sha256':sha,'crc_and_manifest_passed':True},manifest
-source,manifest=pack('专利研习-0.2-源码.zip',files)
-portable=[p for p in files if p.relative_to(root).parts[0] in {'runtime-web','server','core','cli','adapters','data','tests'} or p.relative_to(root).as_posix() in {'scripts/serve.mjs','scripts/verify-handoff.mjs','启动专利研习.cmd','README.md','package.json','docs/ACCEPTANCE.md'}]
-runtime,_=pack('专利研习-0.2-便携运行包.zip',portable)
+source,manifest=pack('专利研习-0.2.1-源码.zip',files)
+portable=[p for p in files if p.relative_to(root).parts[0] in {'runtime-web','server','core','cli','adapters','data','tests'} or p.relative_to(root).as_posix() in {'scripts/serve.mjs','scripts/verify-handoff.mjs','scripts/Start-PatentLab.ps1','scripts/Stop-PatentLab.ps1','启动专利研习.cmd','停止专利研习.cmd','docs/FIVE_ROUNDS.md','README.md','package.json','docs/ACCEPTANCE.md'}]
+runtime,_=pack('专利研习-0.2.1-便携运行包.zip',portable)
 (root/'RELEASE_FILE_MANIFEST.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2),encoding='utf-8')
 (out/'启动说明.md').write_bytes((root/'README.md').read_bytes())
 receipt={'source':source,'portable':runtime,'secret_scan':'No known key patterns; runtime and credential directories excluded','excluded_directories':sorted(exclude)}
