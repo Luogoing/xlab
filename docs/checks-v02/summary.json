@@ -1,0 +1,29 @@
+[
+  {
+    "name": "hydrogen",
+    "run_id": "run-ea2ffde4-477a-46cb-8e6b-2627d9dfc021",
+    "status": "completed",
+    "records": 5,
+    "api_calls": 6,
+    "model_calls": 1,
+    "error": null
+  },
+  {
+    "name": "battery",
+    "run_id": "run-aa42ef96-9f51-4e9c-a9bf-e529991ed0c4",
+    "status": "completed",
+    "records": 5,
+    "api_calls": 6,
+    "model_calls": 1,
+    "error": null
+  },
+  {
+    "name": "pultrusion",
+    "run_id": "run-19a8f5be-088d-41d2-a664-b7ad7395d136",
+    "status": "completed",
+    "records": 5,
+    "api_calls": 6,
+    "model_calls": 1,
+    "error": null
+  }
+]

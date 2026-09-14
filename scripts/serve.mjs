@@ -1,10 +1,2 @@
-#!/usr/bin/env node
-import {createServer} from 'node:http';
-import {downloadResponse} from '../core/download.mjs';
-import {readFile,stat} from 'node:fs/promises';
-import {resolve,extname,dirname} from 'node:path';
-import {fileURLToPath} from 'node:url';
-const root=resolve(dirname(fileURLToPath(import.meta.url)),'../runtime-web'),port=Number(process.env.PORT||3000),host=process.env.HOST||'127.0.0.1';
-const mime={'.html':'text/html;charset=utf-8','.js':'text/javascript;charset=utf-8','.css':'text/css;charset=utf-8','.json':'application/json','.svg':'image/svg+xml'};
-const server=createServer(async(req,res)=>{try{const pathname=decodeURIComponent(new URL(req.url,'http://localhost').pathname);if(pathname==='/api/export'&&req.method==='POST'){let chunks=[],size=0;for await (const chunk of req){size+=chunk.length;if(size>12*1024*1024){res.writeHead(413);res.end('导出内容过大');return;}chunks.push(chunk);}const result=await downloadResponse(new Request('http://localhost/api/export',{method:'POST',headers:{'Content-Type':req.headers['content-type']||'application/x-www-form-urlencoded'},body:Buffer.concat(chunks)}));res.writeHead(result.status,Object.fromEntries(result.headers));res.end(Buffer.from(await result.arrayBuffer()));return;}if(pathname==='/health'){res.writeHead(200,{'Content-Type':'application/json'});res.end(JSON.stringify({status:'ok',version:'0.1.0',data_mode:'public_snapshot_or_user_import',inference_mode:'rules'}));return;}const path=resolve(root,'.'+(pathname==='/'?'/index.html':pathname));if(!path.startsWith(root+'/')){res.writeHead(403);res.end('Forbidden');return;}const b=await readFile(path);res.writeHead(200,{'Content-Type':mime[extname(path)]||'application/octet-stream','X-Content-Type-Options':'nosniff','Cache-Control':'no-cache'});res.end(b);}catch{res.writeHead(404,{'Content-Type':'text/plain;charset=utf-8'});res.end('文件不存在，请按 README 构建或使用完整运行包');}});
-server.listen(port,host,()=>console.log(`专利研习运行于 http://${host}:${port} （本机入口）`));server.on('error',e=>{console.error(e.message);process.exitCode=1;});
+import {main} from '../server/http.mjs';
+await main();

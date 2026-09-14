@@ -1,0 +1,31 @@
+{
+  "duplicate_status": 409,
+  "cancel_status": "cancelled",
+  "matching_model_processes_before": 1,
+  "matching_model_processes_after": 0,
+  "strategy_status": "completed",
+  "strategy": {
+    "domain": "general",
+    "topic": "复合材料拉挤成型",
+    "object": "复合材料拉挤成型",
+    "focus": "结构或过程",
+    "object_terms": [
+      "复合材料拉挤成型",
+      "复合材料拉挤",
+      "拉挤成型",
+      "拉挤工艺",
+      "composite pultrusion",
+      "pultrusion"
+    ],
+    "focus_terms": [],
+    "exclude_terms": [],
+    "from": null,
+    "to": null,
+    "include_unknown_dates": true,
+    "rationale": "选用中文常用表述与英文对应词，覆盖复合材料拉挤成型及其工艺表达。主题尚未限定纤维、树脂、设备或性能方向，因此重点词与排除词留空，避免遗漏相关专利。",
+    "classification_hint": "首版未自动推荐分类号；请在官方分类表中核验后使用",
+    "match_logic": "组内 OR、对象与重点两组 AND；标题、人工转述、原文摘录参与词项匹配"
+  },
+  "provider": "codex",
+  "model": "gpt-6-astra"
+}

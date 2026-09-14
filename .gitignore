@@ -44,3 +44,9 @@ next-env.d.ts
 /.codex/
 /outputs/
 /work/
+
+.local/
+artifacts/local-v02/
+
+tsconfig.tsbuildinfo
+RELEASE_FILE_MANIFEST.json

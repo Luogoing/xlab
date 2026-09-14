@@ -1,0 +1,153 @@
+{
+  "schema": 2,
+  "version": "0.2.0",
+  "checked_at": "2026-09-14T02:43:56.355099+00:00",
+  "automated_tests": {
+    "passed": 47,
+    "failed": 0
+  },
+  "live": [
+    {
+      "name": "hydrogen",
+      "run_id": "run-ea2ffde4-477a-46cb-8e6b-2627d9dfc021",
+      "status": "completed",
+      "records": 5,
+      "api_calls": 6,
+      "model_calls": 1,
+      "error": null,
+      "database": "cnapp",
+      "actual_query": "(ttl/\"液氢\" OR ab/\"液氢\") AND (ttl/\"压力\" OR ab/\"压力\")",
+      "platform_total": 447,
+      "returned_candidates": 20,
+      "evidence_fragments": 60,
+      "quotes_checked": 18,
+      "raw_files_sha256_checked": 6,
+      "binary_version": "codex-cli 0.154.0-alpha.6.2",
+      "model": "gpt-6-astra",
+      "all_quotes_exact_and_owned": true,
+      "manual_sample": "Two findings per topic read beside original supplied excerpts; scope and uncertainty retained. This is local content review, not patent/legal determination."
+    },
+    {
+      "name": "battery",
+      "run_id": "run-aa42ef96-9f51-4e9c-a9bf-e529991ed0c4",
+      "status": "completed",
+      "records": 5,
+      "api_calls": 6,
+      "model_calls": 1,
+      "error": null,
+      "database": "cnapp",
+      "actual_query": "(ttl/\"电池\" OR ab/\"电池\") AND (ttl/\"液冷\" OR ab/\"液冷\" OR ttl/\"冷却\" OR ab/\"冷却\")",
+      "platform_total": 61668,
+      "returned_candidates": 20,
+      "evidence_fragments": 60,
+      "quotes_checked": 17,
+      "raw_files_sha256_checked": 6,
+      "binary_version": "codex-cli 0.154.0-alpha.6.2",
+      "model": "gpt-6-astra",
+      "all_quotes_exact_and_owned": true,
+      "manual_sample": "Two findings per topic read beside original supplied excerpts; scope and uncertainty retained. This is local content review, not patent/legal determination."
+    },
+    {
+      "name": "pultrusion",
+      "run_id": "run-19a8f5be-088d-41d2-a664-b7ad7395d136",
+      "status": "completed",
+      "records": 5,
+      "api_calls": 6,
+      "model_calls": 1,
+      "error": null,
+      "database": "cnapp",
+      "actual_query": "(ttl/\"拉挤\" OR ab/\"拉挤\")",
+      "platform_total": 4889,
+      "returned_candidates": 20,
+      "evidence_fragments": 60,
+      "quotes_checked": 16,
+      "raw_files_sha256_checked": 6,
+      "binary_version": "codex-cli 0.154.0-alpha.6.2",
+      "model": "gpt-6-astra",
+      "all_quotes_exact_and_owned": true,
+      "manual_sample": "Two findings per topic read beside original supplied excerpts; scope and uncertainty retained. This is local content review, not patent/legal determination."
+    }
+  ],
+  "controls": {
+    "duplicate_status": 409,
+    "cancel_status": "cancelled",
+    "matching_model_processes_before": 1,
+    "matching_model_processes_after": 0,
+    "strategy_status": "completed",
+    "strategy": {
+      "domain": "general",
+      "topic": "复合材料拉挤成型",
+      "object": "复合材料拉挤成型",
+      "focus": "结构或过程",
+      "object_terms": [
+        "复合材料拉挤成型",
+        "复合材料拉挤",
+        "拉挤成型",
+        "拉挤工艺",
+        "composite pultrusion",
+        "pultrusion"
+      ],
+      "focus_terms": [],
+      "exclude_terms": [],
+      "from": null,
+      "to": null,
+      "include_unknown_dates": true,
+      "rationale": "选用中文常用表述与英文对应词，覆盖复合材料拉挤成型及其工艺表达。主题尚未限定纤维、树脂、设备或性能方向，因此重点词与排除词留空，避免遗漏相关专利。",
+      "classification_hint": "首版未自动推荐分类号；请在官方分类表中核验后使用",
+      "match_logic": "组内 OR、对象与重点两组 AND；标题、人工转述、原文摘录参与词项匹配"
+    },
+    "provider": "codex",
+    "model": "gpt-6-astra"
+  },
+  "browser": {
+    "browser": "Playwright Chromium, headed on Windows",
+    "downloads_on_disk": [
+      "Markdown",
+      "JSON",
+      "DOCX",
+      "workspace backup"
+    ],
+    "frozen_report_id": "report-task-mu0me2c4-l5z5f-1",
+    "all_formats_same_report": true,
+    "utf8_csv_dedup": true,
+    "backup_restore_edit": true,
+    "refresh_retains_exclusion": true,
+    "stale_after_exclusion": true,
+    "viewport_width": 390,
+    "document_scroll_width": 375,
+    "console_errors": 0
+  },
+  "word": {
+    "application": "Microsoft Word COM",
+    "example_pages": {
+      "hydrogen": 12,
+      "battery": 10,
+      "pultrusion": 9
+    },
+    "browser_edited_docx_pages": 9,
+    "edited_text_in_rendered_pdf": true,
+    "blank_pages": 0,
+    "visual_review": "All example pages inspected as contact sheets; browser-edited first page inspected at native size. No clipping, overlap, blank pages or orphan headings observed."
+  },
+  "credentials": {
+    "windows_dpapi_roundtrip": true,
+    "plaintext_packaged": false,
+    "glm_generation": "Unverified: previous timeout then HTTP 429 / 1302; no silent fallback"
+  },
+  "limits": [
+    "Single local user/service use; no classroom effectiveness validation or public publishing",
+    "All AI inferences and route labels remain pending human review",
+    "Tested data source coverage is cnapp, first 20 candidates and five usable details per topic",
+    "Quota counters reflect this service, not other clients using the same provider account"
+  ],
+  "packaged_runtime": {
+    "version": "0.2.0",
+    "entry": 200,
+    "assets": 200,
+    "installed_node_modules": false,
+    "restart_status": "interrupted",
+    "automatic_model_calls": 0,
+    "loopback": "127.0.0.1:3088",
+    "passed": true
+  }
+}

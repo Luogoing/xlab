@@ -1,57 +1,44 @@
-# 运行与交接说明
+# 专利研习 0.2：本机使用说明
 
-## 一、推荐启动路径
+此版本支持“主题 → 可编辑检索式 → Patentics 真实专利 → Codex 证据分析 → 阅读筛选 → 报告编辑导出”。也保留 0.1 的离线快照、导入、CLI 和 MCP。
 
-交付包包含已经构建的网页资源，可在安装Node.js 22.13或更高版本的电脑上直接启动。进入解压后的项目根目录，执行下列命令，然后在同一电脑的浏览器打开 http://127.0.0.1:3000 。该地址只属于启动服务的电脑，当前交付不包含对外发布的网站。
+## 启动
 
-```bash
-node scripts/serve.mjs
-```
+解压整个便携包，双击 `启动专利研习.cmd`，保持终端开启，浏览器打开 http://127.0.0.1:3000 。服务仅监听本机。当前电脑已验证 Node 24.13.0；其他电脑需要 Node 22.13 或更高版本。运行便携包无需安装 npm 依赖。终端 Ctrl+C 停止。
 
-运行包启动与命令行分析无需安装npm依赖，也不需要模型密钥。服务使用Node内置HTTP模块提供网页和文件下载；默认仅监听本机。终端按Ctrl+C停止服务。端口占用时，macOS/Linux可执行 `PORT=3001 node scripts/serve.mjs`，Windows PowerShell可执行 `$env:PORT=3001; node scripts/serve.mjs`，并访问对应端口。
+也可在项目目录执行 `node scripts/serve.mjs`。端口被占用时，在 PowerShell 执行 `$env:PORT='3001'` 后再启动，浏览器改用相同端口。运行数据写入本包 `.local`，默认不写入安装目录之外的项目路径。
 
-## 二、演示与实际使用
+## 首次配置与模型
 
-默认示例可完成从主题到报告的完整整理过程。先运行液氢储罐主题，预期匹配5条公开记录、6条原文片段；查看证据，记录筛选理由并按需要取消保留。随后进入技术方案和探索报告，补充研究背景与自己的判断，导出Word、Markdown或证据JSON。切换电池液冷示例，默认匹配3条记录、3条片段；修改为桥梁阻尼等现有样本未覆盖主题时应显示无结果。
+本机已将用户提供的 Patentics、智谱凭据保存在当前 Windows 用户的 DPAPI 加密存储。解压包在同一 Windows 用户下可读取已有配置；包内不携带密钥。换电脑或换 Windows 用户时，在页面“服务配置”填写对应凭据。存储位置为 `%USERPROFILE%\.codex\secrets\patent-lab`，仅服务端解密。更新已有凭据保留同目录 `.previous` 加密副本；需要回滚时先停止服务，再将该副本恢复为相应 `.dpapi` 文件。
 
-导入功能接受UTF-8的JSON和标准CSV，单文件不超过4MB、单次不超过2000条。JSON可为记录数组或含records数组的对象；publication_number与title必填，其余字段允许缺失。CSV表头采用数据契约中的英文名称，申请人可用分号分隔；复杂evidence数组请用JSON。编号格式只检查可用字符，不代表已经核验官方编号真实性。导入后按公开编号保留首条，冲突会提示；不会依据标题自动合并专利族。
+默认数据源是用户指定的 Patentics 网关；其地址及鉴权方式见 `server/patentics.mjs`，不向其他数据库发送该凭据。默认模型是桌面应用附带的 Codex / gpt-6-astra，中等推理。启动时仅发现 `%LOCALAPPDATA%\OpenAI\Codex\bin` 下版本不低于 0.154 的二进制，不使用 PATH 中旧 CLI。使用临时会话、只读沙箱、禁用工具、标准输入证据和 JSON Schema；沿用当前用户已登录的 Codex 授权。模型子进程使用环境变量白名单，不继承数据源密钥。模型运行上限 180 秒。
 
-任务工作状态保存在当前浏览器的localStorage中，刷新后会重新校验并恢复。任务备份包含数据、查询历史、排除决定、筛选理由、用户编辑及报告版本；载入备份时会重算当前结果，仅将与内置已核验样本内容一致的记录保留为公开快照，其他记录标为用户导入。历史报告按已有结果回放保留，不能据此声称重新验证历史全文。
+智谱 / glm-4.7-flash 可显式选择；当前凭据此前返回过 429/1302，未取得成功生成，所以不显示“已验证可用”。失败不自动换模型。Codex 在本机已完成三主题分析和策略生成。
 
-## 三、命令行与Agent入口
+## 使用流程
 
-命令行直接复用网页使用的核心模块，可在无互联网的条件下执行内置样本。每次运行输出task.json、report.md与report.docx，具体目录由--out指定。给--input传入自己合法持有的JSON或CSV可处理自己的记录，给--strategy传入JSON可精确设置检索条件。
+1. 输入主题，调整对象词、重点词、排除词和公开日期；也可点“AI 辅助生成检索策略”。AI 策略先回填，随后由使用者查看和修改。
+2. 真实检索区显示可编辑 Patentics 字段式。词项修改会重新编译；手工编辑的实际检索式随任务保存。默认库 cnapp，检索前 20 条候选，按平台顺序去重并获取最多 5 篇有正文的详情；失败顺序补位。直接编辑平台式时，以该式限定平台结果，本地对象词作为阅读提示。
+3. 点击“真实检索并分析”，观察阶段、请求数、详情数和错误。每次只允许一个活动任务。请求间隔至少 3.2 秒；还执行本机记录的 20 次/分钟、1200 次/5 小时、9000 次/周限制，单任务最多 20 次数据请求。单请求超时 35 秒，临时服务故障最多重试一次，鉴权或限流错误立即停。供应商对同一账户其他客户端的调用仍可能另行限流。
+4. 阅读证据卡，展开完整权利要求/说明书字段，记录筛选理由。取消保留会使原 AI 分析过期；点“按当前保留记录重新分析”才会再次调用。模型引用校验检查归属、逐字引文和校验和；直接引文之外的技术路线、差异及研究发现都保留“待人工复核”。程序校验不能证明归纳内容已经获得专业认可。
+5. 在“探索报告”编辑标题、背景及自己的判断。Word、Markdown、JSON 从同一冻结报告生成，报告编号与版本一致；内容不变的连续导出复用同版，修改后生成新版。历史报告保留原文。JSON 保存冻结报告及其证据快照；“任务备份”另含人工排除、笔记、学习状态和历史报告。
 
-```bash
-node cli/patent.mjs --topic "液氢储罐压力调节方案探索" --out artifacts/my-demo
-node cli/patent.mjs --topic "锂电池液冷结构探索" --input data/patent_records.json --out artifacts/my-import
-node cli/patent.mjs --help
-node --test tests/*.test.mjs
-```
+当前任务和运行阶段保存在 `.local`。刷新恢复当前任务；服务重启将未完成运行标为中断，需明确重试。模型失败仍保留详情与规则整理。备份继续读版本 1，升级为版本 2；恢复的模型结果标为回放，不冒充新的实时调用。
 
-MCP入口通过标准输入输出提供两个工具，分别生成检索策略和分析提供的专利记录。测试客户端已实际启动该服务进程并完成initialize、tools/list、tools/call及无效参数检查，验证协议版本为2025-06-18。用户指定的真实Agent宿主、DSH或ToA语境尚未确认，当前交付不宣称特定宿主安装成功。宿主配置应将command设为本机node绝对路径、args设为项目adapters/mcp-stdio.mjs绝对路径；网页可检测WebMCP能力并注册create_patent_exploration，是否可用以宿主实测为准。
+导入接受 UTF-8 JSON / CSV，必填 publication_number、title，最多 2000 条。导入、备份、导出解码后上限统一为 32 MiB；网关单响应另设 5 MiB 防止异常正文耗尽内存。超限显示错误并保留已有成果。
 
-```bash
-node adapters/mcp-stdio.mjs
-```
+## 文件位置与恢复
 
-## 四、开发与重新构建
+- `.local/runs`：阶段 JSON；`.local/sources/<run_id>`：原始 XML；`.local/workspace.json`：工作区。
+- `.local/gateway-quota.json`：本机调用窗口；重启后继续计数。
+- `core`：离线共享核心与模型引用验证；`server`：Windows 凭据、网关、模型、任务与 HTTP。
+- `docs/ACCEPTANCE.md`：当前验收；`docs/baseline-0.1` 与交接原文：历史信息，不代表 0.2 当前能力。
 
-源代码采用TypeScript/React页面和独立ES模块核心，保留pnpm锁定依赖。需要修改页面时安装pnpm 11.25.0（以package.json实际声明为准），在项目根目录执行pnpm install --frozen-lockfile，再按下列命令构建便携网页或运行检查。已构建运行包不依赖开发缓存；重新安装依赖需要访问包源，实际版本受pnpm-lock.yaml约束。
+`.local` 和凭据均不在交付压缩包内。复制源码/运行包不会转移本机任务；请通过任务备份迁移已取得的阅读结果。原始 XML 需要时可从上述来源目录另行保留。只在本机单人场景使用；没有课堂效果或公开发布承诺。
 
-```bash
-pnpm install --frozen-lockfile
-node node_modules/typescript/bin/tsc --noEmit --pretty false
-node node_modules/vite/bin/vite.js build --config vite.portable.config.ts
-node scripts/serve.mjs
-```
+## 离线与开发
 
-app/page.tsx负责全部用户操作，portable/main.tsx复用同一页面生成runtime-web。core/engine.mjs提供规范化、检索、证据、分组、报告及恢复；core/docx.mjs生成OOXML文档；core/download.mjs仅负责同源文件响应。cli与adapters直接调用核心，不维护第二套业务逻辑。网页目前使用本机状态，未实现多人共享任务库、账号或教师后台；如需跨设备协作，应在真实试点明确需求后再接入持久化服务。
+`node cli/patent.mjs --topic "液氢储罐压力调节" --out artifacts/my-demo` 使用内置快照，输出 task.json、report.md、report.docx。MCP 入口保持 `node adapters/mcp-stdio.mjs`，其现有工具继续离线工作。
 
-## 五、运行边界与故障处理
-
-当前可复现能力建立在公开记录快照和用户导入之上，实时专利接口及实时模型均未配置。UnconfiguredLiveSource会返回明确错误，模型适配边界只通过模拟结构、错误引用、超时及拒绝进行验证，未向真实模型发起请求。规则分类仅识别词项，可能遗漏表达不同的相关记录，且否定句中的词也会计入命中；人工阅读与筛选仍为必要步骤。查询分数为相对词项排序，不代表准确概率。
-
-浏览器下载应以实际取得文件为完成依据，当前云端测试环境的下载捕获受到平台协议错误影响。交付已保留同源文件接口和命令行导出，HTTP测试验证了DOCX字节与核心输出一致，CLI生成的两组Word已经渲染检查。接手人仍应在本机Chrome或Edge完整点击Word、Markdown、JSON及任务备份下载，并核验文件内容；若浏览器阻止下载，允许本机站点正常下载后复测，或直接使用CLI输出。项目没有把无法捕获下载写成成功落盘。
-
-异常处理应先保留有效材料，再按错误提示修复局部输入。无法解析的文件请核对UTF-8、CSV引号和必填字段；日期使用YYYY-MM-DD；空结果可放宽重点词和时间。存储空间不足时导出任务备份，使用新浏览器工作区继续；来源链接失效时保留原标识并回到发布机构核查，不将失效页面视为仍已验证。应用内部预览地址不属于对外入口，运行包和文档才是本次可移交成果。
+源码重建：`pnpm install --frozen-lockfile`、`pnpm exec tsc --noEmit`、`pnpm build:portable`。当前实际验证 pnpm 11.19.0、Node 24.13.0；包内锁文件保留。测试为 `node --test tests/*.test.mjs`；无 node_modules 冷启动验证为 `node scripts/verify-cold-start.mjs`。发布包校验为 `node scripts/verify-handoff.mjs`，读取 RELEASE_FILE_MANIFEST.json；旧 HANDOFF_FILE_MANIFEST.json 仅保留原始交接基线。

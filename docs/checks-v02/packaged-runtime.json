@@ -1,0 +1,10 @@
+{
+  "version": "0.2.0",
+  "entry": 200,
+  "assets": 200,
+  "installed_node_modules": false,
+  "restart_status": "interrupted",
+  "automatic_model_calls": 0,
+  "loopback": "127.0.0.1:3088",
+  "passed": true
+}

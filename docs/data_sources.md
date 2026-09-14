@@ -1,3 +1,5 @@
+> 历史 0.1 资料。0.2 当前状态与验收见 README.md、docs/ACCEPTANCE.md。
+
 # 公开专利样本与数据路径核验说明
 
 核验日期：2026年9月12日。数据文件：`patent_records.json`，版本 `public-patent-learning-v1`。本说明记录已经执行的检索、页面核验和一次终端直取验证，供产品的数据接入、证据展示和交接复查使用。

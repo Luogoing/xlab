@@ -1,3 +1,5 @@
+> 历史 0.1 资料。0.2 当前状态与验收见 README.md、docs/ACCEPTANCE.md。
+
 # 首版产品独立静态审查记录
 
 审查日期：2026年9月12日。审查对象为`/workspace/sites/patent-intelligence/core/engine.mjs`、`core/docx.mjs`和`app/page.tsx`。依据为附件第十一节P0需求、第十二节交互要求及A02、A03、A04、A07、A09、A12、A13、A14验收建议。本次仅阅读源代码及追踪状态流转，未修改项目代码，未执行浏览器操作，未将静态推断写成已完成的运行测试。
