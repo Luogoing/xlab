@@ -18,7 +18,7 @@ for folder,dirs,names in os.walk(root):
   if p.is_symlink():continue
   rel=p.relative_to(root);name=rel.as_posix()
   if p.name.startswith('.env') or p.suffix in {'.dpapi','.tmp','.previous','.log'}:continue
-  if rel.parts[0] in directories or name in rootfiles or name in docfiles:source[name]=p.read_bytes()
+  if rel.parts[0] in directories or name in rootfiles or name in docfiles or name.startswith('docs/qa-v03/'):source[name]=p.read_bytes()
 patterns=[rb'(?<![A-Za-z0-9_])pt_[0-9a-fA-F]{40,80}(?![0-9a-fA-F])',rb'(?<![A-Za-z0-9_])[0-9a-fA-F]{32}\.[A-Za-z0-9_-]{8,80}(?![A-Za-z0-9_-])',rb'\bsk-(?:proj-)?[A-Za-z0-9_-]{32,}',rb'gh[pousr]_[A-Za-z0-9]{30,}']
 def scan(name,data,depth=0):
  if depth>4:raise RuntimeError('Nested archive depth exceeded: '+name)
@@ -42,7 +42,7 @@ def pack(name,files):
    b=z.read('xlab/'+e['path']);assert len(b)==e['bytes'] and hashlib.sha256(b).hexdigest()==e['sha256']
  sha=hashlib.sha256(dest.read_bytes()).hexdigest();(out/(name+'.sha256')).write_text(sha+'  '+name+'\n',encoding='utf-8')
  return {'file':name,'files':len(files)+1,'bytes':dest.stat().st_size,'sha256':sha,'crc_and_manifest_passed':True}
-portable={p:b for p,b in source.items() if p.split('/')[0] in {'core','server','cli','adapters','data'} or p in rootfiles or p in docfiles or p in {'scripts/serve.mjs','scripts/verify-handoff.mjs','scripts/Start-Xlab.ps1','scripts/Stop-Xlab.ps1','scripts/Start-PatentLab.ps1','scripts/Stop-PatentLab.ps1'}}
+portable={p:b for p,b in source.items() if p.split('/')[0] in {'core','server','cli','adapters','data'} or p in rootfiles or p in docfiles or p.startswith('docs/qa-v03/') or p in {'scripts/serve.mjs','scripts/verify-handoff.mjs','scripts/Start-Xlab.ps1','scripts/Stop-Xlab.ps1','scripts/Start-PatentLab.ps1','scripts/Stop-PatentLab.ps1'}}
 for p in (root/'runtime-web').rglob('*'):
  if p.is_file():portable[p.relative_to(root).as_posix()]=p.read_bytes()
 portable['runtime/node.exe']=(node/'node.exe').read_bytes();portable['runtime/LICENSE']=(node/'LICENSE').read_bytes()

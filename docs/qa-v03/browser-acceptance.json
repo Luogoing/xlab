@@ -1,0 +1,207 @@
+{
+  "version": "0.3.0",
+  "browser": "Playwright CLI / headed Chromium",
+  "viewport": [
+    1366,
+    768
+  ],
+  "narrow": [
+    390,
+    844
+  ],
+  "tablet": [
+    820,
+    1180
+  ],
+  "research_project": "project-bebf5aa6-33f8-45b9-90b6-550baa7864e7",
+  "records": 11,
+  "rounds": 3,
+  "data_calls": 13,
+  "run_history": [
+    {
+      "run_id": "run-0b3cb7e5-dc70-4677-bea6-ed24a7a4e9e3",
+      "retry_of": null,
+      "kind": "search",
+      "status": "completed",
+      "created_at": "2026-09-15T16:03:34.280Z",
+      "updated_at": "2026-09-15T16:03:52.229Z",
+      "api_calls": 6,
+      "model_calls": 0,
+      "error": null
+    },
+    {
+      "run_id": "run-65f7c16f-a43d-4530-b9b0-2e93e3a7be0a",
+      "retry_of": null,
+      "kind": "search",
+      "status": "completed",
+      "created_at": "2026-09-15T16:04:38.346Z",
+      "updated_at": "2026-09-15T16:04:55.059Z",
+      "api_calls": 6,
+      "model_calls": 0,
+      "error": null
+    },
+    {
+      "run_id": "run-32a53b7b-5886-4190-a028-b29aa2741f9b",
+      "retry_of": null,
+      "kind": "collect",
+      "status": "completed",
+      "created_at": "2026-09-15T16:05:59.107Z",
+      "updated_at": "2026-09-15T16:05:59.745Z",
+      "api_calls": 1,
+      "model_calls": 0,
+      "error": null
+    },
+    {
+      "run_id": "run-6dca7482-f3b0-4671-b1ca-ee8e4bdabcd5",
+      "retry_of": null,
+      "kind": "analyze",
+      "status": "completed",
+      "created_at": "2026-09-15T16:07:03.815Z",
+      "updated_at": "2026-09-15T16:07:03.819Z",
+      "api_calls": 0,
+      "model_calls": 0,
+      "error": null
+    },
+    {
+      "run_id": "run-25f958a0-6f73-45a9-b7f1-9771e70a7645",
+      "retry_of": null,
+      "kind": "analyze",
+      "status": "cancelled",
+      "created_at": "2026-09-15T16:08:54.651Z",
+      "updated_at": "2026-09-15T16:09:08.241Z",
+      "api_calls": 0,
+      "model_calls": 1,
+      "error": {
+        "code": "CANCELLED",
+        "message": "模型分析已取消",
+        "retryable": false,
+        "correlation_id": "err-mu2va0dj"
+      }
+    },
+    {
+      "run_id": "run-4a4587ed-56d6-481c-a5eb-faba4f043d19",
+      "retry_of": "run-25f958a0-6f73-45a9-b7f1-9771e70a7645",
+      "kind": "analyze",
+      "status": "completed",
+      "created_at": "2026-09-15T16:09:10.074Z",
+      "updated_at": "2026-09-15T16:11:49.243Z",
+      "api_calls": 0,
+      "model_calls": 1,
+      "error": null
+    }
+  ],
+  "manual_query_preserved": true,
+  "next_page_added_records": 5,
+  "candidate_collection_added_records": 1,
+  "notes_pins_history_archive_equal": true,
+  "archive_xml_sha256_passed": true,
+  "legacy_original_equal": true,
+  "two_tab_conflict_preserved_both_drafts": true,
+  "double_save_fixed": true,
+  "main_service_reconnect_preserves_draft": true,
+  "semantic_review": [
+    {
+      "text": "两条路线处理不同结构层级：前者配置电池簇与液冷机，后者连接导电排与顶部冷却件，可作为分层阅读线索，待人工复核。",
+      "quotes": [
+        {
+          "evidence_id": "ev-CN224739260U-82feb381-b26ad9586b2d0764",
+          "quote": "每个所述电池簇单元对应一个所述卧式液冷机完成热能调控"
+        },
+        {
+          "evidence_id": "ev-CN224745739U-da954917-f6a2f8e230f74222",
+          "quote": "所述导热件用于将所述导电排(2)导热连接至所述顶部冷却件。"
+        }
+      ],
+      "limitations": "无法据此比较冷却效率，也未证明两种结构已组合应用。"
+    },
+    {
+      "text": "CCS路线给出导热胶与导热垫两种界面实现，并限定界面相对支架的高度关系；可据此研究装配接触条件，待人工复核。",
+      "quotes": [
+        {
+          "evidence_id": "ev-CN224745739U-54919f49-f6a2f8e230f74222",
+          "quote": "所述导热件为导热胶，涂覆于所述导电排(2)的外侧端面(21)；或者，所述导热件为导热垫，贴合于所述导电排(2)的外侧端面(21)。"
+        },
+        {
+          "evidence_id": "ev-CN224745739U-23c60bd1-f6a2f8e230f74222",
+          "quote": "所述导热胶或所述导热垫的外侧端面高于所述第一端面(11)所在平面。"
+        }
+      ],
+      "limitations": "未给出材料参数、接触压力或热阻测试，不能判定两种材料的优劣。"
+    },
+    {
+      "text": "移动储能车片段将电池组和液冷机均写为位于下层；上下层实际分配存在待核对之处，不宜自行改写为上下分置。",
+      "quotes": [
+        {
+          "evidence_id": "ev-CN224739260U-82feb381-b26ad9586b2d0764",
+          "quote": "所述PACK舱通过隔板分为上层和下层，下层容置有电池组，下层容置有为所述电池组完成热能调控的卧式液冷机"
+        }
+      ],
+      "limitations": "缺少附图及完整上下文，是否存在文字错误须人工复核。"
+    }
+  ],
+  "round5": {
+    "status": "completed_with_model_scope_limit",
+    "project": "project-32f35a44-e95c-48bf-bd73-9292ad9dd49d",
+    "records": 5,
+    "analyzed_records": 2,
+    "api_calls": 6,
+    "model_calls": 4,
+    "five_record_analysis_timeout_twice": true,
+    "smaller_explicit_selection_succeeded": true,
+    "analysis_elapsed_ms": 171736,
+    "extra_data_calls_for_analysis": 0,
+    "notes_and_comparison_saved": true,
+    "history_versions": 2,
+    "system_print_dialog_automation": "not completed; Chromium PDF generation and Word rendering verified",
+    "run_history": [
+      {
+        "run_id": "run-bf46f45e-3d00-4bf0-b7d0-53898efd4b43",
+        "retry_of": null,
+        "kind": "explore",
+        "status": "partial",
+        "created_at": "2026-09-15T16:20:08.761Z",
+        "updated_at": "2026-09-15T16:25:32.536Z",
+        "api_calls": 6,
+        "model_calls": 2,
+        "error": {
+          "code": "MODEL_TIMEOUT",
+          "message": "模型分析超时，已取得资料已保留",
+          "retryable": true,
+          "correlation_id": "err-mu2vv3xx"
+        }
+      },
+      {
+        "run_id": "run-217112f4-1d81-4383-8996-5b520e4b0120",
+        "retry_of": "run-bf46f45e-3d00-4bf0-b7d0-53898efd4b43",
+        "kind": "explore",
+        "status": "partial",
+        "created_at": "2026-09-15T16:26:42.579Z",
+        "updated_at": "2026-09-15T16:29:43.033Z",
+        "api_calls": 0,
+        "model_calls": 1,
+        "error": {
+          "code": "MODEL_TIMEOUT",
+          "message": "模型分析超时，已取得资料已保留",
+          "retryable": true,
+          "correlation_id": "err-mu2w0h9h"
+        }
+      },
+      {
+        "run_id": "run-579549a2-0b59-4967-9248-04c0257eefba",
+        "retry_of": null,
+        "kind": "analyze",
+        "status": "completed",
+        "created_at": "2026-09-15T16:31:53.930Z",
+        "updated_at": "2026-09-15T16:34:45.701Z",
+        "api_calls": 0,
+        "model_calls": 1,
+        "error": null
+      }
+    ]
+  },
+  "limitations": [
+    "Second physical computer not tested",
+    "GLM not successfully verified in this run"
+  ],
+  "tests": 77
+}

@@ -14,7 +14,7 @@ import {exportProjectArchive,readArchive} from '../server/archive.mjs';
 import {zipFiles} from '../core/docx.mjs';
 import {buildStrategy,normalizeRecords,createTask,AppError,restoreWorkspace,hash} from '../core/engine.mjs';
 import {attachAnalysis,modelState} from '../core/model-analysis.mjs';
-import {modelEvidenceInput} from '../server/models.mjs';
+import {modelEvidenceInput,classifyModelError} from '../server/models.mjs';
 const temp=()=>mkdtemp(join(tmpdir(),'xlab-v03-'));
 test('V03 retries preserve one logical round and count failed model attempts',()=>{let p=newProject('液氢');const first={run_id:'first',input:{kind:'search',project_id:p.project_id,strategy:{}},actual_query:{sq:'液氢'},status:'partial',api_calls:6,model_calls:1,task:{records:[]}};p=mergeRun(p,first);p=mergeRun(p,{...first,run_id:'retry',retry_of:'first',previous_api_calls:6,api_calls:8,model_calls:2});assert.equal(p.rounds.length,1);assert.equal(p.rounds[0].api_calls,8);assert.deepEqual(p.run_history.map(r=>r.api_calls),[6,2]);assert.equal(projectTask(p).cost.model_calls,3);assert.equal(mergeRun(p,first).run_history.length,2);assert.equal(p.last_run.run_id,'retry');});
 test('V03 new analysis archives prior human decisions instead of reapplying IDs',()=>{const p=newProject('液氢');p.analyses=[{run_id:'old'}];p.reviews={'model-finding-1':{state:'adopted'}};const next=mergeRun(p,{run_id:'new',input:{kind:'analyze'},task:{model_analysis:{}},model_calls:1});assert.deepEqual(next.reviews,{});assert.equal(next.review_history[0].analysis_run_id,'old');assert.equal(next.review_history[0].reviews['model-finding-1'].state,'adopted');});
@@ -48,3 +48,5 @@ test('V03 legacy evidence identity and edited report survive migration',()=>{con
 test('V03 explicit analysis runs even when automatic post-search analysis is disabled',async()=>{let calls=0;const s=new RunService(await temp(),{models:{generate:async(k,i)=>{calls++;return {output:output(i.records),metadata:{provider:'codex',model:'test'}};}}});const r=await s.start({kind:'analyze',topic:'液氢',strategy,task:task(),analyze:false});await terminal(s);const done=await s.store.get(r.run_id);assert.equal(calls,1);assert.equal(done.status,'completed');assert(done.task.model_analysis);});
 
 test('V03 rule report questions cite representative passages without copying every fragment',()=>{const p=newProject('液氢');p.records=[record()];const sections=reportSections(p);const next=sections.find(s=>s.id==='next');const refs=[...next.text.matchAll(/\[(ev-[^\]]+)\]/g)];assert(refs.length>0);assert(refs.length<=projectTask(p).analysis.opportunities.length*p.records.length);});
+
+test('V03 model errors retain classification without endpoint or secret text',()=>{assert.equal(classifyModelError({message:'Reconnecting after stream disconnected'}),'connection');assert.equal(classifyModelError({message:'HTTP 429 rate limit reached'}),'rate_limited');assert.equal(classifyModelError({message:'unknown private detail'}),'provider_error');});
