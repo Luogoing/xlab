@@ -15,11 +15,11 @@ export function parseDetail(xml,candidate,db,strategy){
   const abstract=content(at(root,'Abstract')),claims=all(at(root,'Claims'),'Claim'),sections=all(at(root,'Description'),'Section'),now=new Date().toISOString();
   const record={...candidate,title:content(at(root,'Title'))||candidate.title,abstract_excerpt:abstract||null,claims:content(at(root,'Claims'))||null,description:content(at(root,'Description'))||null,publication_date:date(content(at(root,'Date'))),application_date:date(content(at(root,'Header/Filed'))),applicants:all(at(root,'Header'),'AssigneeName').map(content),inventors:all(at(root,'Header'),'InventorName').map(content),classifications:all(at(root,'Classification'),'InterClassItem').map(content),source:'Patentics 授权数据网关',source_url:`${GATEWAY}/patent/detail?spn=${candidate.publication_number}&db=${db}`,retrieved_at:now,language:db==='cn'||db==='cnapp'?'zh-CN':'原文语言',data_mode:'live',source_metadata:{provider:'patentics_gateway',database:db,raw_sha256:sha256(xml),retrieved_at:now,coverage:'本次指定数据库及查询范围；未核验全球覆盖、权利归属或法律状态'},evidence:[]};
   const segments=[];
-  function cut(text,field,label){for(let offset=0;offset<text.length;){let end=Math.min(offset+900,text.length);if(end<text.length){const pos=Math.max(text.lastIndexOf('。',end),text.lastIndexOf('\n',end));if(pos>offset+250)end=pos+1;}const value=text.slice(offset,end).trim();if(value)segments.push({text:value,field,locator:`${label}；原文字符 ${offset+1}—${end}`,language:record.language,rank:field==='abstract_excerpt'?100:field==='claims'?30:0});offset=end;}}
+  function cut(text,field,label){for(let offset=0;offset<text.length;){let end=Math.min(offset+900,text.length);if(end<text.length){const pos=Math.max(text.lastIndexOf('。',end),text.lastIndexOf('\n',end));if(pos>offset+250)end=pos+1;}const value=text.slice(offset,end).trim();if(value)segments.push({text:value,field,locator:`${label}；原文字符 ${offset+1}—${end}`,language:record.language,source_start:record[field]?.indexOf(value)??null,source_end:record[field]?.includes(value)?record[field].indexOf(value)+value.length:null,independent:label.includes('独立项'),rank:field==='abstract_excerpt'?100:field==='claims'?30:0});offset=end;}}
   cut(abstract,'abstract_excerpt','摘要');claims.forEach((c,i)=>cut(content(c),'claims',`权利要求 ${c.attrs.name||i+1}${c.attrs.dep==='0'?'（网关标记独立项）':''}`));sections.forEach((s,i)=>cut(content(s),'description',`说明书节 ${s.attrs.id||i+1}`));
   const words=[...strategy.object_terms,...strategy.focus_terms].map(t=>t.toLowerCase()).filter(Boolean);segments.forEach(e=>e.rank+=words.filter(w=>e.text.toLowerCase().includes(w)).length*10);
   // Keep a bounded reading set; the complete unmodified XML remains in the local source archive.
-  record.evidence=segments.sort((a,b)=>b.rank-a.rank).slice(0,12).map(({rank,...e})=>e);
+  const ranked=segments.sort((a,b)=>b.rank-a.rank);const guaranteed=['abstract_excerpt','claims','description'].map(field=>ranked.find(e=>e.field===field&&(field!=='claims'||e.independent))||ranked.find(e=>e.field===field)).filter(Boolean);record.evidence=[...new Set([...guaranteed,...ranked])].slice(0,48).map(({rank,...e})=>e);
   record.content_scope=`网关返回${claims.length?'权利要求、':''}${sections.length?'说明书及':''}摘要；阅读区选取 ${record.evidence.length}/${segments.length} 个片段，全文保存于本机任务来源`;
   return record;
 }
@@ -47,14 +47,19 @@ export class PatenticsSource{
   }
   async acquire(run,signal,onProgress){
     const db=run.input.database||'cnapp';if(!DBS.has(db))throw new AppError('INVALID_DATABASE','不支持的专利数据库');
-    const strategy=normalizeStrategy(run.input.strategy,run.input.topic),sq=run.input.query_override||compileQuery(strategy,run.input.topic);run.actual_query={sq,db,ips:20,pn:1,sf:'QueryFulltext'};
+    const strategy=normalizeStrategy(run.input.strategy,run.input.topic),sq=run.input.query_override||compileQuery(strategy,run.input.topic);run.actual_query={sq,db,ips:20,pn:Number.isInteger(run.input.page)&&run.input.page>0?run.input.page:1,sf:'QueryFulltext'};
+    if(run.input.kind==='collect'&&!run.candidates){run.candidates=run.input.candidates||[];run.acquired=[];run.candidate_index=0;}
     if(!run.candidates){const result=parseSearch(await this.request('search',run.actual_query,run,signal,onProgress));run.candidates=result.records;run.source_total=result.total;run.source_pages=result.pages;run.candidate_index=0;run.acquired=[];await onProgress();}
+    run.failed_candidates=[];
+    if(run.actual_query.pn>1&&run.candidates.length&&run.input.previous_page_publications?.length===run.candidates.length&&run.candidates.every((c,i)=>c.publication_number===run.input.previous_page_publications[i])){run.retrieval_outcome='partial';run.stop_reason='duplicate_page';run.warnings.push({code:'DUPLICATE_PAGE',message:'平台返回与上一页相同的候选，已停止补全文，避免重复消耗请求'});return normalizeRecords(run.acquired,'live');}
     for(;run.candidate_index<run.candidates.length&&run.acquired.length<5&&run.api_calls<20;run.candidate_index++){
-      signal?.throwIfAborted();const c=run.candidates[run.candidate_index];if(run.acquired.some(r=>r.publication_number===c.publication_number))continue;
-      try{const xml=await this.request('detail',{spn:c.publication_number,db,sf:'ShowPatent'},run,signal,onProgress),raw=parseDetail(xml,c,db,strategy),normal=normalizeRecords([raw],'live').records[0];if(!normal.evidence.length){run.warnings.push({message:`${c.publication_number} 缺少可引用正文，保留为候选`});}else if(!run.input.query_override&&!selectRecords([normal],strategy).length){run.warnings.push({message:`${c.publication_number} 的可见正文未通过当前词项/日期筛选`});}else if(!run.acquired.some(r=>r.publication_number===raw.publication_number))run.acquired.push(raw);
-      }catch(e){if(['CANCELLED','SOURCE_AUTH','SOURCE_RATE_LIMIT','SOURCE_QUOTA','RUN_CALL_LIMIT'].includes(e.code))throw e;run.warnings.push({message:`${c.publication_number}：${e.message}`,code:e.code});}
+      signal?.throwIfAborted();const c=run.candidates[run.candidate_index];if(run.acquired.some(r=>r.publication_number===c.publication_number)||run.actual_query.pn>1&&run.input.known_publications?.includes(c.publication_number))continue;
+      try{const xml=await this.request('detail',{spn:c.publication_number,db,sf:'ShowPatent'},run,signal,onProgress),raw=parseDetail(xml,c,db,strategy),stamp=(raw.source_metadata.source_run_id=run.run_id),normal=normalizeRecords([raw],'live').records[0];if(!normal.evidence.length){run.warnings.push({message:`${c.publication_number} 缺少可引用正文，保留为候选`});}else if(!run.input.query_override&&!selectRecords([normal],strategy).length){run.warnings.push({message:`${c.publication_number} 的可见正文未通过当前词项/日期筛选`});}else if(!run.acquired.some(r=>r.publication_number===raw.publication_number))run.acquired.push(raw);
+      }catch(e){if(['CANCELLED','SOURCE_AUTH','SOURCE_RATE_LIMIT','SOURCE_QUOTA','RUN_CALL_LIMIT'].includes(e.code))throw e;run.failed_candidates.push(c);run.warnings.push({message:`${c.publication_number}：${e.message}`,code:e.code});}
       await onProgress();
     }
+    run.retrieval_outcome=!run.candidates.length?'empty':run.acquired.length===0?'failed':run.acquired.length>=5?'complete':run.failed_candidates.length||run.api_calls>=20?'partial':'complete';
+    run.stop_reason=!run.candidates.length?'zero_matches':run.api_calls>=20&&run.acquired.length<5?'request_budget':run.acquired.length>=5?'detail_target':run.acquired.length===0?'no_usable_details':'candidates_exhausted';
     return normalizeRecords(run.acquired,'live');
   }
 }

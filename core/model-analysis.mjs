@@ -1,12 +1,12 @@
 import {hash,AppError} from './engine.mjs';
-export const PROMPT_VERSION='patent-evidence-0.2.1';
+export const PROMPT_VERSION='patent-evidence-0.3.0';
 const string={type:'string'},strings={type:'array',items:string};
 const object=properties=>({type:'object',properties,required:Object.keys(properties),additionalProperties:false});
 export const STRATEGY_SCHEMA=object({object_terms:strings,focus_terms:strings,exclude_terms:strings,rationale:string});
 const quote=object({evidence_id:string,quote:string});
 const statement=object({text:string,type:{type:'string',enum:['direct_quote','research_inference','research_question']},quotes:{type:'array',items:quote},scope:string,limitations:string});
 export const ANALYSIS_SCHEMA=object({routes:{type:'array',items:object({label:string,description:string,evidence_ids:strings})},findings:{type:'array',items:statement},questions:{type:'array',items:statement}});
-export function contextFingerprint(task,meta={}){return hash(JSON.stringify({topic:task.topic,strategy:task.query.strategy,selection:task.records.map(r=>[r.record_id,r.title,r.publication_date,r.evidence.map(e=>[e.evidence_id,e.text,e.checksum])]),provider:meta.provider,model:meta.model,prompt_version:meta.prompt_version,schema:2}));}
+export function contextFingerprint(task,meta={}){return hash(JSON.stringify({topic:task.topic,strategy:task.query.strategy,source_query:task.query.source_query,draft_query:task.query.draft_query,exclusions:task.query.manual_exclusions||[],selection:task.records.filter(r=>!meta.analyzed_record_ids||meta.analyzed_record_ids.includes(r.record_id)).map(r=>[r.record_id,r.title,r.publication_date,r.evidence.map(e=>[e.evidence_id,e.text,e.checksum])]),provider:meta.provider,model:meta.model,prompt_version:meta.prompt_version,schema:2}));}
 export function validateAnalysis(output,records){
   if(!output||!Array.isArray(output.routes)||!Array.isArray(output.findings)||!Array.isArray(output.questions)||output.findings.length>30||output.routes.length>15||output.questions.length>15)throw new AppError('INVALID_MODEL_OUTPUT','模型结构不符合报告约定');
   const map=new Map(records.flatMap(r=>r.evidence).map(e=>[e.evidence_id,e]));
