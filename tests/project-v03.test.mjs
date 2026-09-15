@@ -8,7 +8,7 @@ import {RunService} from '../server/runs.mjs';
 import {RunStore,acquireDirectoryLock} from '../server/storage.mjs';
 import {ProjectStore} from '../server/projects.mjs';
 import {PatenticsSource,parseDetail} from '../server/patentics.mjs';
-import {newProject,mergeRun,projectTask,freezeReport,migrateProject} from '../core/project.mjs';
+import {newProject,mergeRun,projectTask,freezeReport,migrateProject,reportSections} from '../core/project.mjs';
 import {planEvidenceBatches} from '../core/evidence-selection.mjs';
 import {exportProjectArchive,readArchive} from '../server/archive.mjs';
 import {zipFiles} from '../core/docx.mjs';
@@ -44,3 +44,7 @@ test('V03 legacy evidence identity and edited report survive migration',()=>{con
  test('V03 report cannot promote unreferenced comparison or another patent citation',()=>{const p=newProject('液氢');p.records=[record(),record(2)];p.comparison.record_ids=p.records.map(r=>r.record_id);p.comparison.cells['pat-CN1A|核心结构']='无来源结论';assert.throws(()=>freezeReport(p),/来源/);p.comparison.cells['pat-CN1A|核心结构']='['+p.records[1].evidence[0].evidence_id+']';assert.throws(()=>freezeReport(p),/对应专利/);p.comparison.cells['pat-CN1A|核心结构']='人工来源：研究者提供的2026年试验记录，仅作待核验备注';assert(freezeReport(p));});
  test('V03 archive truncated after local entries is rejected',async()=>{const store=new RunStore(await temp()),p=newProject('液氢');const archive=Buffer.from(await exportProjectArchive(p,store));assert.throws(()=>readArchive(archive.subarray(0,archive.length-22)),/尾部/);});
  test('V03 repeated next page stops before detail requests',async()=>{const root=await temp(),s=new RunService(root,{sourceFactory:()=>new PatenticsSource({key:'mock',store:new RunStore(root),limiter:{reserve:async()=>{}},fetchImpl:async()=>new Response('<Result><Total>40</Total><PatentList><Patent><p>CN1A</p><t>液氢</t></Patent></PatentList></Result>')})});const r=await s.start({kind:'search',topic:'液氢',strategy,analyze:false,page:2,previous_page_publications:['CN1A']});await terminal(s);const done=await s.store.get(r.run_id);assert.equal(done.stop_reason,'duplicate_page');assert.equal(done.api_calls,1);assert.equal(done.status,'partial');});
+
+test('V03 explicit analysis runs even when automatic post-search analysis is disabled',async()=>{let calls=0;const s=new RunService(await temp(),{models:{generate:async(k,i)=>{calls++;return {output:output(i.records),metadata:{provider:'codex',model:'test'}};}}});const r=await s.start({kind:'analyze',topic:'液氢',strategy,task:task(),analyze:false});await terminal(s);const done=await s.store.get(r.run_id);assert.equal(calls,1);assert.equal(done.status,'completed');assert(done.task.model_analysis);});
+
+test('V03 rule report questions cite representative passages without copying every fragment',()=>{const p=newProject('液氢');p.records=[record()];const sections=reportSections(p);const next=sections.find(s=>s.id==='next');const refs=[...next.text.matchAll(/\[(ev-[^\]]+)\]/g)];assert(refs.length>0);assert(refs.length<=projectTask(p).analysis.opportunities.length*p.records.length);});

@@ -14,4 +14,9 @@
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 @media print{@page{size:A4;margin:20mm}.no-print,.app-sidebar,.app-topbar,.workspace-heading,.report-mode,.report-columns{display:none!important}.xlab{display:block}.app-main,.report-workspace{padding:0;background:white}.report-paper{border:0;padding:0;margin:0;max-width:none}.report-paper h1{font-size:20pt}.report-paper h2{font-size:15pt;break-after:avoid}.report-paper p{font-size:12pt;line-height:1.8;orphans:3;widows:3}.citation{color:#194c76;font-size:9pt;min-height:0}.report-paper button{padding:0;display:inline}body{background:white}}
 
+@media(max-width:650px){.xlab button,.xlab select,.xlab summary,.xlab .check{min-height:44px}.xlab summary{display:flex;align-items:center}.xlab summary:before{content:'▸';margin-right:8px}.xlab details[open]>summary:before{content:'▾'}.xlab .result-top .check{min-width:44px}.xlab .home-search select,.xlab .home-search .primary{font-size:14px}.xlab .topic-examples button{padding:8px 0}.xlab .citation{min-height:44px}}
 @media print{.citation{font-size:0}.citation:after{content:attr(data-citation);font-size:9pt}}
+
+.app-sidebar>.brand,.app-sidebar>.new-project,.app-sidebar>nav,.app-sidebar>footer{flex-shrink:0}.reader-feedback:empty{display:none}.reader-feedback{padding:8px 22px;background:#e7f5e8;color:#205d35;font-size:14px;border-bottom:1px solid var(--line)}
+
+.comparison-selection{margin-bottom:20px;border:1px solid var(--line);border-radius:7px;padding:12px 18px;background:#fffefa}.comparison-selection>summary{min-height:44px;align-content:center}.comparison-selection .compare-picker{margin:15px 0 0}@media(max-width:650px){.app-sidebar nav button{padding:6px 3px;white-space:nowrap;font-size:12px}.comparison-selection{padding:8px 12px}}
