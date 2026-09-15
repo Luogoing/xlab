@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "专利研习 | 科研主题探索",
-  description: "面向工科学生的专利情报学习与科研主题探索。",
+  title: "XLAB · 专利研习",
+  description: "检索专利，读懂证据，形成研究判断。",
   other: {
     "codex-preview": "development",
   },
